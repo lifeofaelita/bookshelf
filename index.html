@@ -1406,7 +1406,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   }
   function addBooks(list) {
     var have = {};
-    books().forEach(function (b) { have[(b.title + "|" + b.author).toLowerCase()] = true; });
+    state.mine.forEach(function (b) { have[(b.title + "|" + b.author).toLowerCase()] = true; });
     var added = 0, skipped = 0;
     list.forEach(function (x) {
       var title = String(x.title || "").trim(); if (!title) return;
