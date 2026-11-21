@@ -27,7 +27,14 @@ I am 39 and I am still finding out what I like to read. For years I loved the id
 
 ## Want it all done for you?
 
-Skip the page and the guide. Copy this into Claude, ChatGPT, Gemini or any chatbot you already use. It asks about your books one step at a time, works out the scores and gives you picks. The same text is in [prompts/00-do-it-all-for-me.md](prompts/00-do-it-all-for-me.md).
+You do not need the page or the guide for this. A chatbot can do the whole job if you give it one prompt.
+
+1. Open a chatbot you already use, such as Claude, ChatGPT or Gemini. The free version is enough.
+2. Press **Show the prompt to copy** below, then copy all of the text in the box. A copy button appears in the top right corner of the box.
+3. Paste it into a new chat and send it.
+4. Answer the questions it asks about the books you have read. It works out the scores and gives you picks.
+
+If the box will not open for you, the same text is in [this file](prompts/00-do-it-all-for-me.md), and you copy and paste it in the same way.
 
 <details>
 <summary>Show the prompt to copy</summary>
