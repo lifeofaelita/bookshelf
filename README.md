@@ -38,15 +38,6 @@ I am 39 and I am still finding out what I like to read. For years I loved the id
 4. **Get your prompt.** Open **Get picks**, choose how many picks you want and press **Build my prompt**, then **Copy the prompt**.
 5. **Paste it into a chatbot.** Use the Claude, ChatGPT or Gemini links under the prompt. Free plans work.
 
-## Put it on your phone
-
-You can keep the bookshelf on your home screen and open it like an app. There is nothing to install from an app store.
-
-- **iPhone or iPad:** open the live bookshelf in Safari, tap the Share button, choose **Add to Home Screen**, then tap **Add**.
-- **Android:** open the live bookshelf in Chrome, tap the menu with the three dots, then choose **Add to Home screen** or **Install app**.
-
-Your shelf lives in the browser, so the home screen icon may start with an empty shelf, especially on an iPhone. Before you add the icon, press **Download a backup** in the page you already use. Then open the icon, press **Restore from a backup** and choose that file. After that, use the icon every time so your ratings stay in one place.
-
 ## Four ways to add books
 
 ![The Add books tab](docs/add-books.png)
