@@ -27,15 +27,23 @@ I am 39 and I am still finding out what I like to read. For years I loved the id
 
 ## Want it all done for you?
 
-You do not need the page or the guide for this. A chatbot can do the whole job. There are two ways to start it.
+You do not need the page or the guide for this. A chatbot can do the whole job. Pick the way that suits you.
 
-**The one-line way.** Paste this into a chatbot that can open links, such as Claude, ChatGPT or Gemini, and send it:
+| | The one-line way | The copy-and-paste way |
+| --- | --- | --- |
+| Best for | Anyone on a phone, or anyone who wants the least effort | A chatbot that cannot open links, or anyone who wants to read the instructions before sending them |
+| Works with | Chatbots that can open links, such as Claude, ChatGPT and Gemini. On free plans this can depend on whether browsing is switched on. | Any chatbot at all |
+| What you do | Paste one line and send it | Copy a block of text, paste it and send it |
+
+### The one-line way
+
+Paste this into your chatbot and send it. If the chatbot says it cannot open the link, use the copy-and-paste way instead.
 
 ```
 Read https://raw.githubusercontent.com/lifeofaelita/bookshelf/main/for-chatbots.md and follow the instructions in it.
 ```
 
-**The copy-and-paste way.** Use this if the chatbot says it cannot open the link.
+### The copy-and-paste way
 
 1. Open a chatbot you already use, such as Claude, ChatGPT or Gemini. The free version is enough.
 2. Press **Show the prompt to copy** below, then copy all of the text in the box. A copy button appears in the top right corner of the box.
