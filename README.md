@@ -13,7 +13,7 @@ Most book apps ask for a star rating and stop there. This one asks two questions
 - It shows your books on a wooden shelf, sorted by genre.
 - It works out what earns a five from you and what makes you stop.
 - It writes a ready-made prompt from your shelf. You paste that prompt into Claude, ChatGPT or Gemini and the chatbot suggests what to read next.
-- It does not run any AI itself, send emails or collect your data. That is why it costs nothing.
+- It does not contain a chatbot, send emails or collect your data. That is why it costs nothing.
 
 ## Why not Kindle or Kobo recommendations?
 
@@ -33,12 +33,15 @@ I am 39 and I am still finding out what I like to read. For years I loved the id
 4. **Get your prompt.** Open **Get picks**, choose how many picks you want and press **Build my prompt**, then **Copy the prompt**.
 5. **Paste it into a chatbot.** Use the Claude, ChatGPT or Gemini links under the prompt. Free plans work.
 
-## Three ways to add books
+## Four ways to add books
 
 ![The Add books tab](docs/add-books.png)
 
+Aim for about 10 books with a rating, because that is when your patterns start to show. The page accepts as few as three, but the picks stay general until you add more.
+
 | Option | Best for | How |
 | --- | --- | --- |
+| Start from ten titles | Anyone with no Goodreads history | Paste ten books you have read into a chatbot with [prompts/06-first-shelf-from-ten-books.md](prompts/06-first-shelf-from-ten-books.md). It writes a file you import, plus suggested Ideas and Reading scores for you to check. |
 | Import from Goodreads | Anyone with a long reading history | On Goodreads open **My Books**, then **Import and export**, then **Export Library**. Download the file, then choose it under **Import from Goodreads** on the Add books tab. Books you already have are skipped. |
 | Add one book | A short list, or books you read recently | Fill in the form on the Add books tab. Only the title is required. |
 | Import from another app | StoryGraph users | Export your library as a CSV file and import it the same way. The common column names are recognised, but not every export has been tested. |
@@ -122,7 +125,7 @@ If you buy ebooks, you can ask a chatbot which wishlist books are worth buying w
 
 ## Use it without the page
 
-The **prompts** folder holds plain-text versions you can paste straight into a chatbot: build a taste profile, weekly picks, check a single book, and sort books into shelves.
+The **prompts** folder holds plain-text versions you can paste straight into a chatbot: build a taste profile, weekly picks, check a single book, sort books into shelves, and build your first shelf from ten books.
 
 ## Run your own copy
 
