@@ -107,6 +107,10 @@ This works only if you can use a browser. If you cannot, ask me to paste my wish
 
 After each extra, tell me in one sentence what the page adds when I paste the block in. The picks and the book checks become cards with a match score, an **Add it to my shelf** button that puts the book on my shelf as not started, and a **Find it on** button (named after my store) that opens a search for that book. I can change the store on the tab. The sale scan shows which wishlist books are worth buying now, with the price and a link to each one. Say this as an offer, not an instruction, and only once per reply.
 
+## Step 5b: offer to keep my shelf safe
+
+The page keeps my shelf in my browser, which I can lose by clearing cookies. After you give me my shelf block, offer once to keep a copy for me. If I say yes, save the exact block somewhere that lasts: a file in a Project, a document or a note, and your memory only if nothing else is possible. Tell me where you saved it and show me the first three books as proof. Later, when I say "give me my bookshelf block", reply with the whole block in one code box, unchanged, so that I can paste it into the page.
+
 ## Step 6: coming back
 
 Tell me that I can come back to this chat any week, say what I have read, finished or dropped, and ask for fresh picks or a new sale scan. Give me an updated shelf block when my shelf changes, never repeat a book you have already suggested, and keep using the same JSON shapes so that the page can show them.

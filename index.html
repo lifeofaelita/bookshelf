@@ -461,14 +461,28 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
           <div class="keyitem"><span class="badge dnf" aria-hidden="true">DNF</span><span><b>Dark badge.</b> You did not finish it. The cover is dimmed too. A stopped book still counts as a clue about what you do not enjoy.</span></div>
           <div class="keyitem"><span class="badge tbr" aria-hidden="true">TBR</span><span><b>To be read.</b> On your shelf but not started, so it has no rating yet.</span></div>
         </div>
-        <p class="keyfoot">Your changes save in this browser only.</p>
+        <p class="keyfoot">Your shelf is saved in this browser only, so clearing cookies or site data erases it. <button class="linkbtn" type="button" id="go-safe">Keep a safe copy</button></p>
       </div>
     </section>
 
     <section id="view-add" hidden aria-labelledby="t-add">
       <div class="panel">
         <h2>Add books</h2>
-        <p class="lede">Your books stay in this browser. Nothing is uploaded or sent anywhere.</p>
+        <p class="lede">Nothing is uploaded or sent anywhere by this page.</p>
+
+        <div class="callout safe" id="safe">
+          <h3 style="margin:0 0 6px;font-size:1rem">Keep your shelf safe</h3>
+          <p style="margin:0 0 8px">This page stores your shelf in your browser. If you clear cookies or site data, or switch to a new computer, the shelf is gone. Do one of these two things once, and again after big changes:</p>
+          <ol style="margin:0 0 10px 1.2em;padding:0">
+            <li><b>Download a backup.</b> You get a small file. Keep it in your cloud drive or email it to yourself.</li>
+            <li><b>Ask your chatbot to keep a copy in the cloud.</b> Press the button, paste the text into Claude, ChatGPT or Gemini, and ask it to save the copy in a Project, document or note. To get your shelf back, ask it for your bookshelf block and paste that block into the box below.</li>
+          </ol>
+          <div class="linkrow">
+            <button class="btn" id="safe-backup" type="button">Download a backup</button>
+            <button class="btn ghost" id="safe-copy" type="button">Copy my shelf for my chatbot</button>
+            <span class="status" id="safe-status" role="status" aria-live="polite"></span>
+          </div>
+        </div>
 
         <h3>The fastest way: let your chatbot do it</h3>
         <p class="lede">Paste this one line into Claude, ChatGPT or Gemini. It reads the setup instructions, asks which books you have read, asks you to rate each one, and gives you a block to paste back below. If you have an export from Goodreads, StoryGraph or Kobo, give it that and it asks far fewer questions.</p>
@@ -518,7 +532,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
         </form>
 
         <h3 style="margin-top:26px;font-size:1rem">3. Back up or start again</h3>
-        <p class="lede">Your shelf lives in this browser. Download a backup before you clear your browser data or switch computers.</p>
+        <p class="lede">To restore from a backup file, choose it below. To restore from your chatbot, paste the shelf block it gives back into the box above. Books you already have are skipped.</p>
         <div class="linkrow">
           <button class="btn ghost" id="backup" type="button">Download a backup</button>
           <label class="filebtn">Restore from a backup <input type="file" id="restore-file" accept=".json,application/json"></label>
@@ -1608,6 +1622,45 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     say(msg, ""); showPrompt("t-out", "t-text", buildTaste());
   });
   wireCopy("p-copy", "p-text"); wireCopy("c-copy", "c-text"); wireCopy("s-copy", "s-text"); wireCopy("t-copy", "t-text"); wireCopy("one-copy", "one-text");
+
+  var KEEP = [
+    "Please keep a safe copy of my bookshelf so I can ask for it back later.",
+    "",
+    "1. Save the block below exactly as it is. Do not shorten it, sort it or change it.",
+    "2. Put it somewhere that lasts: a file in a Project, a document or a note. Use your memory only if nothing else is possible.",
+    "3. Tell me where you saved it, and show me the first three books as proof.",
+    "4. Whenever I say \"give me my bookshelf block\", reply with the whole block in one code box, unchanged.",
+    "5. Whenever I tell you about books I have finished or dropped, update the block, save it again and tell me it is saved.",
+    ""
+  ].join("\n");
+  function shelfBlock() {
+    var rows = state.mine.map(function (b) {
+      var o = { title: b.title, author: b.author, genre: b.shelf, status: b.status };
+      if (b.rating) o.rating = b.rating;
+      if (b.idea != null) o.ideas = b.idea;
+      if (b.pt != null) o.reading = b.pt;
+      if (b.why) o.why = b.why;
+      if (b.when) o.when = b.when;
+      if (b.note) o.note = b.note;
+      return o;
+    });
+    return JSON.stringify({ type: "shelf", books: rows });
+  }
+  function runBackup(statusId) {
+    var blob = new Blob([JSON.stringify({ version: 2, over: state.over, mine: state.mine, sampleOff: state.sampleOff, recs: state.recs, pile: state.pile, taste: state.taste, tasteDate: state.tasteDate, sale: state.sale, lastCheck: state.lastCheck, store: state.store }, null, 2)], { type: "application/json" });
+    var a = el("a", { href: URL.createObjectURL(blob), download: "bookshelf-backup.json" });
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+    say($(statusId), "Backup downloaded. Keep the file somewhere safe.");
+  }
+  $("safe-backup").addEventListener("click", function () { runBackup("safe-status"); });
+  $("safe-copy").addEventListener("click", function () {
+    if (!state.mine.length) { say($("safe-status"), "Add some books first, then copy your shelf."); return; }
+    var text = KEEP + "\n```json\n" + shelfBlock() + "\n```\n";
+    try { navigator.clipboard.writeText(text).then(function () { say($("safe-status"), "Copied. Paste it into your chatbot now."); }, function () { say($("safe-status"), "Copy failed. Use Download a backup instead."); }); }
+    catch (e) { say($("safe-status"), "Copy failed. Use Download a backup instead."); }
+  });
+  $("go-safe").addEventListener("click", function () { $("t-add").click(); var b = $("safe"); if (b && b.scrollIntoView) b.scrollIntoView({ block: "start" }); });
   $("one-text").value = ONE_LINE;
   var PB = "Your chatbot ends its reply with a grey box of data. Copy the whole reply, paste it here, and the page turns it into cards. Nothing is sent anywhere.";
   pasteBox("pb-setup", "Paste what your chatbot gives you", "When your chatbot has finished asking about your books, it gives you a grey box with your shelf in it. Copy the whole reply and paste it here. Books you already have are skipped.");

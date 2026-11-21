@@ -40,6 +40,10 @@ Either way the page does the display and your chatbot does the thinking. Each ta
 4. **Get your picks.** Open **Read next**, choose how many picks you want and press **Build my prompt**, then **Copy the prompt**.
 5. **Paste it into a chatbot, then paste the reply back.** Use the Claude, ChatGPT or Gemini links under the prompt. Free plans work. Copy the whole reply, paste it into the box under the prompt and press **Show it on the page**. Your picks appear as cards.
 
+## Keeping your shelf safe
+
+The page stores your shelf in your browser, so clearing cookies or site data erases it. On the Add books tab, use **Download a backup**, or press **Copy my shelf for my chatbot**, paste it into Claude, ChatGPT or Gemini and ask it to save the copy in a Project, document or note. To restore, ask the chatbot for your bookshelf block and paste it into the page.
+
 ## Ways to add books
 
 ![The Add books tab](docs/add-books.png)
