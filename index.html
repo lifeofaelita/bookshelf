@@ -378,6 +378,48 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
 .keyitem .badge { position: static; box-shadow: none; }
 .keyitem .ribbon { position: static; display: block; margin: 0 5px; }
 .keyfoot { margin: 14px 0 0; font-size: .82rem; opacity: .85; }
+.grid { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); }
+.btnrow { display: flex; flex-wrap: nowrap; gap: 12px; align-items: center; margin: 10px 0 0; }
+.btnrow .addbtn, .btnrow .klink, .btnrow .linkbtn { white-space: nowrap; flex: none; }
+.addbtn { background: transparent; color: #6d28d9; border: 1px solid #6d28d9; border-radius: 999px; padding: 4px 12px; font-size: .84rem; font-weight: 600; }
+.addbtn:hover { background: #6d28d9; color: #ffffff; }
+.klink { color: #6d28d9; font-size: .84rem; font-weight: 600; text-underline-offset: 3px; }
+.nm a.klink { color: inherit; font-size: inherit; font-weight: inherit; }
+.btn.ghost:hover:not(:disabled) { background: #ece4ff; color: var(--ink); }
+.pastebox { display: grid; gap: 10px; max-width: 760px; }
+.pastebox textarea { min-height: 120px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .82rem; }
+.sect { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--paper-edge); }
+.ktrack .fill.hi { background: #10b981; }
+.ktrack .tick { position: absolute; top: -4px; bottom: -4px; width: 2px; background: #2b2118; opacity: .7; }
+.ktrack { position: relative; }
+.tile.flag b { color: #ff5a7a; }
+.ksale { display: inline-block; font-size: .66rem; font-weight: 700; letter-spacing: .05em; background: #ff5a7a; color: #fff; border-radius: 3px; padding: 1px 5px; margin-left: 5px; vertical-align: middle; }
+@media (max-width: 560px) { .btnrow { flex-wrap: wrap; gap: 8px 12px; } }
+
+/* genre guide cards */
+.gbranch { margin: 26px 0 0; }
+.gbranch > h3 { font-size: 1.2rem; margin: 0; }
+.gbranch > p { margin: 2px 0 12px; color: var(--muted); max-width: 70ch; }
+.ggrid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.gcard { background: #fff; border: 1px solid var(--paper-edge); border-radius: 12px; padding: 14px 16px 16px; display: grid; gap: 8px; align-content: start; border-top: 4px solid var(--gc, #9fb6cc); }
+.ghead { display: flex; gap: 12px; align-items: center; }
+.gicon { flex: none; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--gc) 16%, #fff); color: var(--gc); }
+.gicon svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.gcard h4 { font-family: var(--display); font-size: 1.08rem; margin: 0; line-height: 1.2; }
+.gcard .promise { margin: 0; font-size: .92rem; }
+.gcard dl { margin: 0; display: grid; gap: 4px; font-size: .86rem; }
+.gcard dt { font-weight: 700; color: var(--muted); font-size: .74rem; letter-spacing: .05em; text-transform: uppercase; margin-top: 4px; }
+.gcard dd { margin: 0; }
+.gstat { margin-top: 4px; padding: 8px 10px; border-radius: 8px; font-size: .84rem; background: #eef4fb; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; justify-content: space-between; }
+.gstat.none { background: transparent; border: 1px dashed #9fb6cc; color: var(--muted); }
+.gstat .tryit { background: none; border: 0; color: #6d28d9; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; padding: 0; font-size: .84rem; }
+.mixes { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 0; }
+.mix { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--paper-edge); border-radius: 999px; padding: 6px 14px 6px 8px; font-size: .88rem; }
+.mix i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.mix b { font-weight: 700; }
+.ages { display: flex; align-items: flex-end; gap: 6px; margin: 12px 0 4px; max-width: 640px; }
+.ages div { flex: 1; background: #ece4ff; border-radius: 8px 8px 0 0; padding: 8px 6px; text-align: center; font-size: .82rem; font-weight: 600; }
+.ages div small { display: block; font-weight: 400; color: var(--muted); font-size: .72rem; }
 </style>
 </head>
 <body data-theme="walnut">
@@ -388,7 +430,9 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     <div class="tabs" role="tablist" aria-label="Sections">
       <button class="tab" role="tab" id="t-shelf" aria-selected="true" data-view="shelf">My shelf</button>
       <button class="tab" role="tab" id="t-add" aria-selected="false" data-view="add">Add books</button>
-      <button class="tab" role="tab" id="t-picks" aria-selected="false" data-view="picks">Get picks</button>
+      <button class="tab" role="tab" id="t-recs" aria-selected="false" data-view="recs">Read next</button>
+      <button class="tab" role="tab" id="t-check" aria-selected="false" data-view="check">Will I like it?</button>
+      <button class="tab" role="tab" id="t-sale" aria-selected="false" data-view="sale">Sale watch</button>
       <button class="tab" role="tab" id="t-profile" aria-selected="false" data-view="profile">My taste</button>
       <button class="tab" role="tab" id="t-guide" aria-selected="false" data-view="guide">Genre guide</button>
     </div>
@@ -424,16 +468,31 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     <section id="view-add" hidden aria-labelledby="t-add">
       <div class="panel">
         <h2>Add books</h2>
-        <p class="lede">Three ways to fill your shelf. Your books stay in this browser. Nothing is uploaded or sent anywhere.</p>
+        <p class="lede">Your books stay in this browser. Nothing is uploaded or sent anywhere.</p>
 
-        <h3>1. Import from Goodreads</h3>
+        <h3>The fastest way: let your chatbot do it</h3>
+        <p class="lede">Paste this one line into Claude, ChatGPT or Gemini. It reads the setup instructions, asks which books you have read, asks you to rate each one, and gives you a block to paste back below. If you have an export from Goodreads, StoryGraph or Kobo, give it that and it asks far fewer questions.</p>
+        <div class="promptbox">
+          <textarea id="one-text" readonly aria-label="The one-line prompt" style="min-height:70px"></textarea>
+          <div class="linkrow">
+            <button class="btn" type="button" id="one-copy">Copy the line</button>
+            <span>Then paste it into</span>
+            <a href="https://claude.ai/new" target="_blank" rel="noopener">Claude</a>
+            <a href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>
+            <a href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a>
+          </div>
+        </div>
+        <div id="pb-setup" style="margin-top:20px"></div>
+
+        <h3 class="sect">Or add books yourself</h3>
+        <h3 style="margin-top:6px;font-size:1rem">1. Import from Goodreads</h3>
         <p class="lede">On Goodreads, open My Books, then Import and export, then Export Library. Choose the file you download here. Books you already have are skipped.</p>
         <div class="linkrow">
           <label class="filebtn">Choose your Goodreads file <input type="file" id="csv-file" accept=".csv,text/csv"></label>
           <span class="status" id="csv-status" role="status" aria-live="polite"></span>
         </div>
 
-        <h3 style="margin-top:26px">2. Add one book</h3>
+        <h3 style="margin-top:26px;font-size:1rem">2. Add one book</h3>
         <form class="check" id="add-form">
           <label>Title <input type="text" id="a-title" required placeholder="The title of the book"></label>
           <label>Author <input type="text" id="a-author" placeholder="Who wrote it"></label>
@@ -458,7 +517,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
           </div>
         </form>
 
-        <h3 style="margin-top:26px">3. Back up or start again</h3>
+        <h3 style="margin-top:26px;font-size:1rem">3. Back up or start again</h3>
         <p class="lede">Your shelf lives in this browser. Download a backup before you clear your browser data or switch computers.</p>
         <div class="linkrow">
           <button class="btn ghost" id="backup" type="button">Download a backup</button>
@@ -469,46 +528,52 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
       </div>
     </section>
 
-    <section id="view-picks" hidden aria-labelledby="t-picks">
+    <section id="view-recs" hidden aria-labelledby="t-recs">
       <div class="panel">
-        <h2>Get picks</h2>
-        <p class="lede">This page does not contain a chatbot, so it costs nothing and your books never leave your browser. It writes a prompt from your shelf. Paste the prompt into Claude, ChatGPT, Gemini or any chatbot you already use.</p>
-
-        <h3>What should I read next?</h3>
-        <form class="check" id="picks-form">
-          <label>How many picks
-            <select id="p-count"><option>3</option><option selected>5</option><option>8</option></select>
-          </label>
-          <label>Format
-            <select id="p-format"><option value="">Any</option><option value="ebook or paperback">Ebook or paperback</option><option value="audiobook">Audiobook</option></select>
-          </label>
-          <label class="full">Anything to avoid or include <span class="opt">(optional)</span>
-            <textarea id="p-extra" placeholder="For example: nothing over 400 pages, more memoir, no graphic violence"></textarea>
-          </label>
-          <label class="full check-row"><input type="checkbox" id="p-weekly"> Make it a weekly prompt, so the chatbot sends me fresh picks every Monday</label>
-          <div class="full linkrow">
-            <button class="btn" type="submit">Build my prompt</button>
-            <span class="status" id="p-status" role="status" aria-live="polite"></span>
+        <h2>Read next</h2>
+        <p class="lede">Picks chosen from your own shelf, scored two ways: how much the ideas will suit you, and how easily you will keep reading. This page has no chatbot inside it, so it costs nothing and your books stay in your browser. It writes a prompt, you paste it into Claude, ChatGPT or Gemini, and you paste the reply back here.</p>
+        <div class="grid" id="recs-list"></div>
+        <div class="sect">
+          <h3>Get new picks</h3>
+          <form class="check" id="picks-form">
+            <label>How many picks
+              <select id="p-count"><option>3</option><option selected>5</option><option>8</option></select>
+            </label>
+            <label>Format
+              <select id="p-format"><option value="">Any</option><option value="ebook or paperback">Ebook or paperback</option><option value="audiobook">Audiobook</option></select>
+            </label>
+            <label>Where do you buy books? <select class="storesel" aria-label="Where you buy books"></select></label>
+            <label class="full">Anything to avoid or include <span class="opt">(optional)</span>
+              <textarea id="p-extra" placeholder="For example: nothing over 400 pages, more memoir, no graphic violence"></textarea>
+            </label>
+            <div class="full linkrow">
+              <button class="btn" type="submit">Build my prompt</button>
+              <span class="status" id="p-status" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+          <div class="promptbox" id="p-out" hidden>
+            <textarea id="p-text" readonly aria-label="Your prompt"></textarea>
+            <div class="linkrow">
+              <button class="btn" type="button" id="p-copy">Copy the prompt</button>
+              <span>Then paste it into</span>
+              <a href="https://claude.ai/new" target="_blank" rel="noopener">Claude</a>
+              <a href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>
+              <a href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a>
+            </div>
           </div>
-        </form>
-        <div class="promptbox" id="p-out" hidden>
-          <textarea id="p-text" readonly aria-label="Your prompt"></textarea>
-          <div class="linkrow">
-            <button class="btn" type="button" id="p-copy">Copy the prompt</button>
-            <span>Then paste it into</span>
-            <a href="https://claude.ai/new" target="_blank" rel="noopener">Claude</a>
-            <a href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>
-            <a href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a>
-          </div>
+          <div id="pb-recs" style="margin-top:20px"></div>
+          <details class="how">
+            <summary>How do I get fresh picks every week?</summary>
+            <p>Update your shelf here, build a new prompt and paste the reply back. It takes about a minute. Most chatbots cannot message you on their own, and the ones that can change their plans often, so check what yours offers before you rely on it.</p>
+          </details>
         </div>
-        <details class="how">
-          <summary>How do I get picks every week?</summary>
-          <p>Your chatbot sends them, not this page. Tick the weekly box above, copy the prompt and paste it into a new chat. Then ask the chatbot to repeat it every Monday. ChatGPT has a Tasks feature for this, and Claude has scheduled tasks on some plans. Plans and features change, so check what yours offers.</p>
-          <p>If your plan has nothing like that, set a Monday reminder and paste the prompt yourself. Update your shelf here first, so the prompt includes what you read last week.</p>
-        </details>
+      </div>
+    </section>
 
-        <h3 style="margin-top:28px">Will I like this book?</h3>
-        <p class="lede">Someone recommended a book and you are not sure. This builds a prompt that compares it with everything on your shelf.</p>
+    <section id="view-check" hidden aria-labelledby="t-check">
+      <div class="panel">
+        <h2>Will I like it?</h2>
+        <p class="lede">Someone recommended a book and you are not sure. This writes a prompt that compares it with everything on your shelf and gives you a match score.</p>
         <form class="check" id="check-form">
           <label>Title <input type="text" id="c-title" required placeholder="The title of the book"></label>
           <label>Author <span class="opt">(optional)</span> <input type="text" id="c-author" placeholder="Who wrote it"></label>
@@ -530,18 +595,64 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
             <a href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a>
           </div>
         </div>
+        <div id="pb-check" style="margin-top:20px"></div>
+        <div class="result" id="c-result"></div>
+        <div class="pile" id="pile-wrap" hidden>
+          <h3>My to-read pile</h3>
+          <p class="lede">Books you checked and kept. Add one to your shelf when you buy it.</p>
+          <div class="grid" id="pile"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-sale" hidden aria-labelledby="t-sale">
+      <div class="panel">
+        <h2>Sale watch</h2>
+        <p class="lede">Find out which books on your wishlist are worth buying while they are on sale. A chatbot that can use your browser reads your wishlist and scores every book against your shelf. It only reads. It never buys anything and never needs your password.</p>
+        <form class="check" id="sale-form">
+          <label>Where do you buy books? <select class="storesel" aria-label="Where you buy books"></select></label>
+          <label class="full">Your wishlist <span class="opt">(optional: leave empty if your chatbot can open the store in your browser)</span>
+            <textarea id="s-list" placeholder="Paste titles, authors and prices, one book per line"></textarea>
+          </label>
+          <div class="full linkrow">
+            <button class="btn" type="submit">Build my prompt</button>
+            <span class="status" id="s-status" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+        <div class="promptbox" id="s-out" hidden>
+          <textarea id="s-text" readonly aria-label="Your prompt"></textarea>
+          <div class="linkrow">
+            <button class="btn" type="button" id="s-copy">Copy the prompt</button>
+            <span>Then paste it into a chatbot with browser access, such as</span>
+            <a href="https://claude.ai/new" target="_blank" rel="noopener">Claude</a>
+            <a href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>
+          </div>
+        </div>
+        <div id="pb-sale" style="margin-top:20px"></div>
+        <div id="sale-panel" style="margin-top:16px"></div>
       </div>
     </section>
 
     <section id="view-guide" hidden aria-labelledby="t-guide">
       <div class="panel">
         <h2>Genre guide</h2>
-        <p class="lede">A genre is a promise about what a book will give you. Knowing the genres lets you see what you like, and what you do not, before you buy.</p>
-        <h3>How the shelves fit together</h3>
-        <div class="tree" id="tree"></div>
-        <h3 style="margin-top:22px">Where each genre sits</h3>
-        <p class="lede">Across: how invented it is. Up: how much is at stake and how fast it moves. The number is your average rating, and a bigger circle means more books.</p>
-        <div id="gmap"></div>
+        <p class="lede">A genre is a promise about what a book will give you: a puzzle, a feeling, a fact, a push to change something. Knowing the promises helps you see what you enjoy, and what you do not, before you buy. Every major genre is here, whether or not it is on your shelf yet, because you cannot tell you dislike a genre you have never met.</p>
+        <div id="gcards"></div>
+        <div class="gbranch">
+          <h3>When genres mix</h3>
+          <p>Most new books blend two genres. Read the label as two promises at once.</p>
+          <div class="mixes" id="mixes"></div>
+        </div>
+        <div class="gbranch">
+          <h3>Age labels are not genres</h3>
+          <p>Children's, middle grade, young adult and adult tell you who the book was written for, not what happens in it. Any of them can be a mystery, a fantasy or a love story. Young adult is often fast and easy to read, which makes it a good place to look when long, dense books wear you out.</p>
+          <div class="ages"><div style="height:46px">Children's<small>up to about 8</small></div><div style="height:62px">Middle grade<small>about 8 to 12</small></div><div style="height:78px">Young adult<small>about 12 to 18</small></div><div style="height:94px">New adult<small>about 18 to 25</small></div><div style="height:110px">Adult<small>everyone else</small></div></div>
+        </div>
+        <div class="gbranch">
+          <h3>Where your shelves sit</h3>
+          <p>Across: how invented it is. Up: how much is at stake and how fast it moves. The number is your average rating, and a bigger circle means more books.</p>
+          <div id="gmap"></div>
+        </div>
       </div>
     </section>
 
@@ -557,11 +668,22 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
       </div>
       <div class="panel" style="margin-top:16px">
         <h2>What your shelf says</h2>
-        <p class="lede">Patterns across the books you have rated. The prompts on the Get picks tab use the same history.</p>
+        <p class="lede">Patterns across the books you have rated. Every prompt this page writes uses the same history.</p>
+        <div id="taste-note" class="fine" style="margin:0 0 10px"></div>
         <h3>Genre scorecard</h3>
         <p class="lede">Your average rating for each genre, with how much the ideas mattered and how easy the books were to read.</p>
         <div class="genres" id="genres"></div>
         <div class="findings" id="findings"></div>
+        <details class="how" style="margin:0 0 22px">
+          <summary>Get a deeper read from a chatbot</summary>
+          <p>The cards above come from simple rules on your own ratings. A chatbot can write findings in more detail, naming your books. Build the prompt, paste it into a chatbot, then paste the reply back.</p>
+          <div class="linkrow"><button class="btn" type="button" id="taste-build">Build my prompt</button><span class="status" id="t-status" role="status" aria-live="polite"></span></div>
+          <div class="promptbox" id="t-out" hidden>
+            <textarea id="t-text" readonly aria-label="Your prompt"></textarea>
+            <div class="linkrow"><button class="btn" type="button" id="t-copy">Copy the prompt</button></div>
+          </div>
+          <div id="pb-taste" style="margin-top:16px"></div>
+        </details>
         <h3>Ideas against page-turner score</h3>
         <p class="lede">Every book you have scored, placed by how much the ideas mattered and how easy it was to keep reading. Tap a cover to change its scores.</p>
         <div class="plotwrap">
@@ -621,11 +743,11 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
 
   /* ---------- state ---------- */
   var KEY = "bookshelf-v1";
-  var state = { over: {}, mine: [], sampleOff: false };
+  var state = { over: {}, mine: [], sampleOff: false, recs: [], pile: [], taste: [], tasteDate: "", sale: null, lastCheck: null, store: "kobo-gb" };
   function load() {
     try {
       var raw = localStorage.getItem(KEY);
-      if (raw) { var p = JSON.parse(raw); if (p && typeof p === "object") { state.over = p.over || {}; state.mine = Array.isArray(p.mine) ? p.mine : []; state.sampleOff = !!p.sampleOff; } }
+      if (raw) { var p = JSON.parse(raw); if (p && typeof p === "object") { state.over = p.over || {}; state.mine = Array.isArray(p.mine) ? p.mine : []; state.sampleOff = !!p.sampleOff; state.recs = Array.isArray(p.recs) ? p.recs : []; state.pile = Array.isArray(p.pile) ? p.pile : []; state.taste = Array.isArray(p.taste) ? p.taste : []; state.tasteDate = p.tasteDate || ""; state.sale = p.sale || null; state.lastCheck = p.lastCheck || null; state.store = p.store || "kobo-gb"; } }
     } catch (e) {}
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
@@ -900,7 +1022,13 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   }
   function renderFindings() {
     var f = $("findings"); f.textContent = "";
-    findings().forEach(function (x) { f.appendChild(el("div", { class: "finding" }, [el("h3", { text: x[0] }), el("p", { text: x[1] })])); });
+    var useBot = state.taste && state.taste.length;
+    (useBot ? state.taste : findings()).forEach(function (x) { f.appendChild(el("div", { class: "finding" }, [el("h3", { text: x[0] }), el("p", { text: x[1] })])); });
+    var note = $("taste-note"); note.textContent = "";
+    if (useBot) {
+      note.appendChild(document.createTextNode("Written by your chatbot on " + state.tasteDate + ". "));
+      note.appendChild(el("button", { class: "linkbtn", type: "button", style: "color:var(--muted)", text: "Go back to the page's own rules", onclick: function () { state.taste = []; save(); renderFindings(); } }));
+    }
   }
   function renderPlot() {
     var plot = $("plot"); plot.textContent = "";
@@ -917,42 +1045,93 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   function renderProfile() { renderPictures(); renderGenres(); renderFindings(); renderPlot(); }
 
   /* ---------- genre guide ---------- */
-  var GUIDE = {
-    thriller: ["Invented crime or mystery. A question (who did it, what happened) drives every chapter.", "Tell-tale sign: you want to read one more chapter."],
-    scifi: ["Invented stories set in space, the future or another world, where an idea changes what can happen.", "Tell-tale sign: a big what-if."],
-    cosy: ["Gentle, low-stakes stories about homes, relationships and daily life. The pleasure is the atmosphere, not the plot.", "Tell-tale sign: lots of description and tea."],
-    literary: ["Invented stories led by characters, language or a theme, with a looser plot.", "Tell-tale sign: you remember how it felt more than what happened."],
-    memoir: ["True accounts of a life or an experience, told by the person who lived it.", "Tell-tale sign: one honest human voice."],
-    narrative: ["Real events told like a novel, with scenes, characters and a plot.", "Tell-tale sign: it reads like fiction but happened."],
-    psych: ["Books that explain how minds, bodies or societies work, led by research and ideas.", "Tell-tale sign: more explaining than story."],
-    growth: ["Books that teach a method for changing habits, work or mindset.", "Tell-tale sign: advice, frameworks and exercises."],
-    spirit: ["Books about meaning, consciousness, faith or how to live.", "Tell-tale sign: big questions with no single answer."]
+  var ICONS = {
+    book: '<path d="M24 12c-4-3-10-4-16-3v27c6-1 12 0 16 3 4-3 10-4 16-3V9c-6-1-12 0-16 3z"/><path d="M24 12v27"/>',
+    magnifier: '<circle cx="21" cy="21" r="10"/><path d="M29 29l11 11"/>',
+    stopwatch: '<circle cx="24" cy="27" r="14"/><path d="M24 27V18M19 8h10M24 8v5M37 14l3-3"/>',
+    heart: '<path d="M24 40C8 29 6 18 12 13c4-3 9-1 12 4 3-5 8-7 12-4 6 5 4 16-12 27z"/>',
+    planet: '<circle cx="24" cy="24" r="9"/><ellipse cx="24" cy="24" rx="19" ry="6" transform="rotate(-20 24 24)"/>',
+    wand: '<path d="M10 38L30 18"/><path d="M34 6v8M30 10h8M40 20v6M37 23h6M22 8v5M19.5 10.5h5"/>',
+    ghost: '<path d="M12 40V22c0-8 5-14 12-14s12 6 12 14v18l-4-4-4 4-4-4-4 4-4-4z"/><circle cx="19" cy="22" r="1.6" fill="currentColor"/><circle cx="29" cy="22" r="1.6" fill="currentColor"/>',
+    hourglass: '<path d="M12 6h24M12 42h24M14 6c0 10 10 12 10 18S14 32 14 42M34 6c0 10-10 12-10 18s10 8 10 18"/>',
+    teacup: '<path d="M8 18h26v8c0 8-5 13-13 13S8 34 8 26z"/><path d="M34 21h4c3 0 4 2 4 4s-2 5-6 5h-2"/><path d="M16 8c-2 2 2 3 0 6M23 8c-2 2 2 3 0 6"/>',
+    person: '<circle cx="24" cy="16" r="8"/><path d="M8 42c1-10 8-14 16-14s15 4 16 14"/>',
+    column: '<path d="M6 16L24 6l18 10zM11 20v18M20 20v18M28 20v18M37 20v18M6 42h36"/>',
+    fingerprint: '<path d="M12 20c2-8 8-12 12-12s10 4 12 12M16 36c-2-6-2-12 0-16M24 40c-3-6-3-14 0-20M32 34c2-5 2-9 0-14M20 20c1-3 7-3 8 0"/>',
+    compass: '<circle cx="24" cy="24" r="17"/><path d="M31 17l-5 10-10 5 5-10z"/>',
+    flask: '<path d="M18 6h12M20 6v12L9 38c-1 3 1 5 4 5h22c3 0 5-2 4-5L28 18V6"/><path d="M14 32h20"/>',
+    steps: '<path d="M6 40h10V30h10V20h10V10h6"/>',
+    sun: '<circle cx="24" cy="24" r="8"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M38 10l-4 4M14 34l-4 4"/>',
+    chart: '<path d="M8 40V8M8 40h34"/><path d="M16 34v-6M24 34V20M32 34v-10M40 34V12"/>',
+    mountain: '<path d="M4 40l14-24 8 12 6-8 12 20z"/><path d="M14 22l4 4 4-4"/>'
   };
-  var BRANCHES = [
-    ["Invented stories (fiction)", "Made up. You read them for what happens next.", ["thriller", "scifi", "cosy", "literary"]],
-    ["True stories", "Real people and real events, told as a story.", ["memoir", "narrative"]],
-    ["True ideas", "Real subjects, explained or taught. You read them for what you take away.", ["psych", "growth", "spirit"]]
+  // shelf: the shelf on your page that holds this genre, or null when the page has no shelf for it yet.
+  var GENRES = [
+    ["Invented stories (fiction)", "Made up. You read them for what happens next, or for how it feels.", [
+      { n: "Literary fiction", icon: "book", c: "#ff6b3d", shelf: "literary", promise: "Stories where the writing and the people matter more than the plot.", why: "Sentences worth rereading, characters who feel real, and questions about families, society or being alive.", sign: "You remember how it felt more than what happened." },
+      { n: "Mystery", icon: "magnifier", c: "#f0386b", shelf: "thriller", promise: "Someone did something, and you work out who and why.", why: "Clues, red herrings and the click of a solved puzzle.", sign: "You flick back to check an earlier page." },
+      { n: "Thriller and suspense", icon: "stopwatch", c: "#f0386b", shelf: "thriller", promise: "Danger is coming and the clock is running.", why: "Speed, tension and just one more chapter.", sign: "You look up and an hour has gone." },
+      { n: "Romance", icon: "heart", c: "#e0489a", shelf: null, promise: "Two people, one relationship, and a hopeful ending you can count on.", why: "Chemistry, feelings, and knowing it will work out.", sign: "The relationship is the plot, not a side dish." },
+      { n: "Science fiction", icon: "planet", c: "#4d7cff", shelf: "scifi", promise: "What if? A story built on science, technology, space or a changed future.", why: "Big ideas wrapped in a story, and problems solved with cleverness.", sign: "The setting is different, and the rules matter." },
+      { n: "Fantasy", icon: "wand", c: "#4d7cff", shelf: "scifi", promise: "Magic, myth or an invented world with its own rules.", why: "Escape, wonder and a long journey with a big cast.", sign: "There is a map at the front, or a glossary at the back." },
+      { n: "Horror", icon: "ghost", c: "#6b4a8a", shelf: null, promise: "Written to frighten or unsettle you, with threats that are supernatural, psychological or all too real.", why: "The thrill of fear from a safe chair.", sign: "You read it with the lights on." },
+      { n: "Historical fiction", icon: "hourglass", c: "#c2873a", shelf: null, promise: "Invented people living through a real time and place.", why: "Learning about an era without feeling you are being taught.", sign: "An author's note at the end says what was real." },
+      { n: "Cosy fiction", icon: "teacup", c: "#ff7ac6", shelf: "cosy", promise: "Gentle, low-stakes stories about community, food, small mysteries and kindness.", why: "Comfort. Nothing too terrible happens.", sign: "Lots of tea, and scenes with no real danger." }
+    ]],
+    ["True stories", "Real people and real events, told as a story.", [
+      { n: "Memoir and biography", icon: "person", c: "#00b8d9", shelf: "memoir", promise: "A real life, told by the person who lived it (memoir) or by someone else (biography).", why: "One honest human voice and what it cost them to get through something.", sign: "You feel you know the author by the end." },
+      { n: "Narrative non-fiction", icon: "compass", c: "#7ed321", shelf: "narrative", promise: "Real events told with scenes, characters and a plot, like a novel that happened.", why: "The pull of a story, plus the knowledge that it is true.", sign: "You keep saying \"and this really happened\"." },
+      { n: "History", icon: "column", c: "#b08968", shelf: null, promise: "What happened and why, built from research and sources.", why: "Understanding how we got here.", sign: "Maps, dates and a long bibliography." },
+      { n: "True crime", icon: "fingerprint", c: "#d61f57", shelf: null, promise: "A real crime, the people involved and how it was solved or never solved.", why: "The puzzle of a mystery, with real stakes.", sign: "Court records, interviews and a timeline." },
+      { n: "Travel and nature", icon: "mountain", c: "#2b9d8f", shelf: null, promise: "A place, a journey or the natural world, seen through one person's eyes.", why: "Going somewhere without leaving the sofa.", sign: "The landscape is practically a character." }
+    ]],
+    ["Ideas and how-to", "Real subjects, explained or taught. You read them for what you take away.", [
+      { n: "Psychology and science", icon: "flask", c: "#10b981", shelf: "psych", promise: "How minds, bodies and the world work, led by research and ideas.", why: "The satisfaction of finally understanding something.", sign: "More explaining than story, and studies by name." },
+      { n: "Self-help and personal growth", icon: "steps", c: "#ffb100", shelf: "growth", promise: "A method for changing a habit, a mindset or a part of your life.", why: "A clear next step you can try this week.", sign: "Frameworks, exercises and chapter summaries." },
+      { n: "Spirituality and philosophy", icon: "sun", c: "#8b5cf6", shelf: "spirit", promise: "Big questions about meaning, consciousness, faith and how to live.", why: "Perspective, and questions without one right answer.", sign: "No plot. Case studies or short chapters to pause on." },
+      { n: "Business and money", icon: "chart", c: "#3b82f6", shelf: null, promise: "How companies, careers and money work, and how to do better.", why: "Practical ideas you can use at work or with your savings.", sign: "Case studies, charts and a how-to ending." }
+    ]]
+  ];
+  var MIXES = [
+    [["#ff7ac6", "Cosy"], ["#f0386b", "Mystery"], "Cosy mystery", "a gentle puzzle with no gore"],
+    [["#e0489a", "Romance"], ["#4d7cff", "Fantasy"], "Romantasy", "a love story in a magical world"],
+    [["#e0489a", "Romance"], ["#f0386b", "Thriller"], "Romantic suspense", "falling in love while in danger"],
+    [["#c2873a", "History"], ["#ff6b3d", "Novel"], "Historical fiction", "invented people in a real era"],
+    [["#4d7cff", "Sci-fi"], ["#f0386b", "Thriller"], "Sci-fi thriller", "high stakes, with a big idea"],
+    [["#00b8d9", "Memoir"], ["#10b981", "Science"], "A surgeon's or scientist's story", "a true life that explains how something works"]
   ];
   function genreStats(id) {
     var l = books().filter(function (b) { return b.shelf === id; }), r = l.filter(function (b) { return b.rating; });
     return { n: l.length, avg: r.length ? r.reduce(function (a, b) { return a + b.rating; }, 0) / r.length : null };
   }
   function renderGuide() {
-    var t = $("tree"); t.textContent = "";
-    BRANCHES.forEach(function (br) {
-      var box = el("div", { class: "tbranch" }, [el("p", { class: "thead", text: br[0] }), el("p", { class: "tsub", text: br[1] })]);
-      br[2].forEach(function (id) {
-        var st = genreStats(id), sh = shelfOf(id), g = GUIDE[id] || ["", ""];
-        var dot = el("span", { class: "dotc" }); dot.style.background = DOT[id];
-        var fill = el("i"); fill.style.width = st.avg ? (st.avg / 5 * 100) + "%" : "0"; fill.style.background = st.avg >= 4 ? "#10b981" : st.avg >= 3 ? "#ff8a1f" : "#f0386b";
-        box.appendChild(el("div", { class: "tleaf" }, [
-          dot,
-          el("div", { class: "nm" }, [sh.name, el("small", { text: st.n + (st.n === 1 ? " book" : " books") })]),
-          el("div", { class: "ds" }, [g[0] + " ", el("i", { text: g[1] })]),
-          el("div", { class: "rt" }, [el("span", { class: "tr" }, [fill]), st.avg ? st.avg.toFixed(1) : "-"])
-        ]));
+    var host = $("gcards"); host.textContent = "";
+    GENRES.forEach(function (br) {
+      var grid = el("div", { class: "ggrid" });
+      br[2].forEach(function (g) {
+        var ico = el("span", { class: "gicon", "aria-hidden": "true" }); ico.innerHTML = '<svg viewBox="0 0 48 48">' + ICONS[g.icon] + '</svg>';
+        var st = g.shelf ? genreStats(g.shelf) : { n: 0, avg: null };
+        var stat;
+        if (g.shelf && st.n) {
+          stat = el("div", { class: "gstat" }, [el("span", { text: "On your " + shelfOf(g.shelf).name.toLowerCase() + " shelf: " + st.n + (st.n === 1 ? " book" : " books") + (st.avg ? ", average " + st.avg.toFixed(1) : "") })]);
+        } else {
+          stat = el("div", { class: "gstat none" }, [el("span", { text: g.shelf ? "Nothing on your shelf yet." : "Not on your shelf yet." }), el("button", { class: "tryit", type: "button", text: "Ask for one to try", onclick: function () { $("p-extra").value = "Include one " + g.n.toLowerCase() + " book that fits my taste, so I can see whether I like the genre."; show("recs"); $("p-extra").focus(); } })]);
+        }
+        var card = el("article", { class: "gcard" }, [
+          el("div", { class: "ghead" }, [ico, el("h4", { text: g.n })]),
+          el("p", { class: "promise", text: g.promise }),
+          el("dl", {}, [el("dt", { text: "You read it for" }), el("dd", { text: g.why }), el("dt", { text: "Tell-tale sign" }), el("dd", { text: g.sign })]),
+          stat
+        ]);
+        card.style.setProperty("--gc", g.c);
+        grid.appendChild(card);
       });
-      t.appendChild(box);
+      host.appendChild(el("div", { class: "gbranch" }, [el("h3", { text: br[0] }), el("p", { text: br[1] }), grid]));
+    });
+    var mx = $("mixes"); mx.textContent = "";
+    MIXES.forEach(function (m) {
+      var a1 = el("i"); a1.style.background = m[0][0]; var a2 = el("i"); a2.style.background = m[1][0];
+      mx.appendChild(el("span", { class: "mix" }, [a1, m[0][1], " + ", a2, m[1][1], " = ", el("b", { text: m[2] }), el("span", { style: "color:var(--muted)", text: ": " + m[3] })]));
     });
     var POS = { thriller: [.8, .78], scifi: [.95, .62], cosy: [.8, .16], literary: [.62, .32], memoir: [.18, .8], narrative: [.34, .9], psych: [.3, .3], growth: [.12, .18], spirit: [.45, .5] };
     var W = 720, H = 440, L = 40, T = 14, iw = W - L - 12, ih = H - T - 44, ns = "http://www.w3.org/2000/svg";
@@ -1075,7 +1254,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   });
 
   $("backup").addEventListener("click", function () {
-    var blob = new Blob([JSON.stringify({ version: 1, over: state.over, mine: state.mine, sampleOff: state.sampleOff }, null, 2)], { type: "application/json" });
+    var blob = new Blob([JSON.stringify({ version: 2, over: state.over, mine: state.mine, sampleOff: state.sampleOff, recs: state.recs, pile: state.pile, taste: state.taste, tasteDate: state.tasteDate, sale: state.sale, lastCheck: state.lastCheck, store: state.store }, null, 2)], { type: "application/json" });
     var a = el("a", { href: URL.createObjectURL(blob), download: "bookshelf-backup.json" });
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
@@ -1089,7 +1268,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
       try {
         var p = JSON.parse(String(rd.result));
         if (!p || typeof p !== "object" || !Array.isArray(p.mine)) throw new Error("bad");
-        state.over = p.over && typeof p.over === "object" ? p.over : {}; state.mine = p.mine; state.sampleOff = !!p.sampleOff; save();
+        state.over = p.over && typeof p.over === "object" ? p.over : {}; state.mine = p.mine; state.sampleOff = !!p.sampleOff; state.recs = Array.isArray(p.recs) ? p.recs : []; state.pile = Array.isArray(p.pile) ? p.pile : []; state.taste = Array.isArray(p.taste) ? p.taste : []; state.tasteDate = p.tasteDate || ""; state.sale = p.sale || null; state.lastCheck = p.lastCheck || null; state.store = p.store || state.store; save(); renderRecs(); renderCheck(); renderPile(); renderSale();
         say($("data-status"), "Restored " + p.mine.length + " books."); refreshAll();
       } catch (e) { say($("data-status"), "That does not look like a bookshelf backup."); }
       input.value = "";
@@ -1099,11 +1278,22 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   $("reset-all").addEventListener("click", function () {
     var btn = this;
     if (btn.getAttribute("data-armed") !== "1") { btn.setAttribute("data-armed", "1"); btn.textContent = "Tap again to erase everything"; setTimeout(function () { btn.removeAttribute("data-armed"); btn.textContent = "Start again"; }, 3000); return; }
-    state = { over: {}, mine: [], sampleOff: false }; save();
+    state = { over: {}, mine: [], sampleOff: false, recs: [], pile: [], taste: [], tasteDate: "", sale: null, lastCheck: null, store: state.store }; save(); renderRecs(); renderCheck(); renderPile(); renderSale();
     btn.removeAttribute("data-armed"); btn.textContent = "Start again"; say($("data-status"), "Everything cleared."); refreshAll();
   });
 
   /* ---------- prompts ---------- */
+  var ONE_LINE = "Read https://raw.githubusercontent.com/lifeofaelita/bookshelf/main/for-chatbots.md and follow the instructions in it.";
+  var STORES = [
+    ["kobo-gb", "Kobo (UK)", "Kobo", "https://www.kobo.com/gb/en/search?query="],
+    ["kobo-us", "Kobo (US)", "Kobo", "https://www.kobo.com/us/en/search?query="],
+    ["kindle-uk", "Kindle (Amazon UK)", "Kindle", "https://www.amazon.co.uk/s?i=digital-text&k="],
+    ["kindle-us", "Kindle (Amazon US)", "Kindle", "https://www.amazon.com/s?i=digital-text&k="],
+    ["bookshop", "Bookshop.org", "Bookshop.org", "https://bookshop.org/search?keywords="]
+  ];
+  function storeRow() { return STORES.filter(function (s) { return s[0] === state.store; })[0] || STORES[0]; }
+  function storeUrl(title, author) { return storeRow()[3] + encodeURIComponent((title + " " + (author && author !== "Unknown author" ? author : "")).trim()); }
+  var SHELF_LIST = SHELVES.filter(function (s) { return s.id !== "other"; }).map(function (s) { return s.id + " = " + s.name; }).join("; ");
   function historyText() {
     return books().map(function (b) {
       return "- " + b.title + " by " + b.author + " | shelf: " + shelfOf(b.shelf).name + " | rating: " + (b.rating ? b.rating + "/5" : "not rated") +
@@ -1115,35 +1305,64 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   var HOW = [
     "HOW TO READ THE SCORES",
     "- Rating is how much I enjoyed the book overall, from 1 to 5.",
-    "- Ideas is how much the subject and ideas mattered to me. Reading is how easy it was to keep reading, judged by pace, structure and voice.",
+    "- Ideas is how much the subject or story stayed with me. Reading is how easy it was to keep turning the pages, judged by pace, structure and voice.",
     "- A book can score high on ideas and low on reading. Treat that as a problem with the style, not with the topic.",
     "- A book I did not finish tells you about style and pacing, even when I did not say why.",
     "- Books I picked up because I felt I should are weaker evidence about my topics than books I chose with enthusiasm.",
     "- Books I read recently count more than books from long ago. Books marked not started carry no opinion yet."
   ];
   function rated() { return books().filter(function (b) { return b.rating != null && b.status !== "toread"; }); }
+  function showsBlock() {
+    if (rated().length < 3) return [];
+    return ["", "WHAT MY SHELF ALREADY SHOWS (worked out by the page from my own ratings, so confirm or correct it)"].concat(findings().map(function (x) { return "- " + x[0] + ": " + x[1]; }));
+  }
+  var REPLY = "Reply with one JSON object inside a single code block, in exactly this shape, and put nothing after the code block. One short sentence before it is fine.";
+  function genreRule() { return "For genre, use only one of these ids: " + SHELF_LIST + "."; }
+  function overall(i, r) { return Math.round(0.4 * i + 0.6 * r); }
+  function clamp(v) { v = Math.round(Number(v)); return isFinite(v) ? Math.max(0, Math.min(100, v)) : 0; }
+
   function buildPicks(o) {
-    var lines = ["You are my reading advisor. Recommend books I will enjoy, using only my reading history below.", "", "MY READING HISTORY", historyText(), ""].concat(HOW, ["",
+    return ["You are my reading advisor. Recommend books I will enjoy, using only my reading history below.", "", "MY READING HISTORY", historyText()].concat(showsBlock(), [""], HOW, ["",
       "WHAT I WANT",
-      "Recommend " + o.count + " books" + (o.format ? " in " + o.format + " format" : "") + ". Do not recommend anything already in my history.",
-      "For each book give: the title and author, the genre, two scores out of 100 (ideas fit and how easy it will be to keep reading), one sentence of reasoning that names a specific book from my history, and one thing to watch out for.",
-      "Order them by overall match. When the two scores differ, weight easy to keep reading at 60 percent and ideas fit at 40 percent, because a great idea I cannot get through does not help me.",
-      "If you are not sure a book exists, leave it out."]);
-    if (o.extra) lines.push("", "ALSO: " + o.extra);
-    if (o.weekly) lines.push("", "MAKE THIS WEEKLY", "Treat this as a weekly request. Every Monday morning, give me " + o.count + " new picks and never repeat a book you have already suggested in this chat. Start with one line on what my history says I enjoy most. End by asking me what I have read, finished or dropped since last time, so you can update the next list.");
-    return lines.join("\n");
+      "Recommend " + o.count + " books" + (o.format ? " in " + o.format + " format" : "") + ". Never recommend a book that is already in my history.",
+      "Score each book out of 100 twice. ideasFit: will the subject or story matter to me. reading: will I keep turning the pages, judged by pace, structure and voice. Do not work out an overall score. The page does that itself, weighting reading at 60 percent and ideas at 40 percent, because a great idea I cannot get through does not help me.",
+      "Each reason must name a specific book from my history. If you are not sure a book exists, leave it out.",
+      genreRule()]).concat(o.extra ? ["", "ALSO: " + o.extra] : [], ["", REPLY,
+      '{"type":"picks","picks":[{"title":"","author":"","genre":"genre id","ideasFit":0,"reading":0,"why":"one sentence that names a book from my history","watchOut":["0 to 2 short cautions"]}]}']).join("\n");
   }
   function buildCheck(q) {
-    return ["You are my reading advisor. Tell me how likely I am to enjoy one book, using only my reading history below and what you reliably know about the book.", "", "MY READING HISTORY", historyText(), ""].concat(HOW, ["",
+    return ["You are my reading advisor. Tell me how likely I am to enjoy one book, using only my reading history below and what you reliably know about the book.", "", "MY READING HISTORY", historyText()].concat(showsBlock(), [""], HOW, ["",
       "THE BOOK",
       "Title: " + q.title,
       "Author: " + (q.author || "not given"),
       "What I know about it: " + (q.notes || "nothing added"),
       "",
       "WHAT I WANT",
-      "Give me two scores out of 100: ideas fit (will the subject matter to me) and ease of reading (will I keep going to the end). Then give an overall match, with ease of reading weighted at 60 percent and ideas fit at 40 percent.",
-      "Give two to four reasons, each naming a specific book from my history, and anything I should watch out for.",
-      "If you do not recognise the book, say so, score it only from the details I gave, and mark your confidence as low. Do not invent plot details."]).join("\n");
+      "Score the book out of 100 twice. ideasFit: will the subject or story matter to me. reading: will I keep turning the pages to the end. The page works out the overall match itself.",
+      "Give two to four reasons, each naming a specific book from my history, and up to three things to watch out for.",
+      "If you do not recognise the book, set confidence to low, score it only from the details I gave, and do not invent plot details. Low scores are fine.",
+      genreRule(), "", REPLY,
+      '{"type":"check","title":"","author":"","genre":"genre id","ideasFit":0,"reading":0,"confidence":"high or medium or low","verdict":"one plain sentence","because":["2 to 4 reasons that each name a book from my history"],"watchOut":["0 to 3 short cautions"]}']).join("\n");
+  }
+  function buildTaste() {
+    return ["You are my reading advisor. Tell me what my reading history says about my taste, using only the history below.", "", "MY READING HISTORY", historyText()].concat(showsBlock(), [""], HOW, ["",
+      "WHAT I WANT",
+      "Write five to seven findings. Each has a heading of two to five words and two or three plain sentences that speak to me as you. Name specific books from my history in every finding.",
+      "Cover what earns a five from me, what makes me stop, any gap between ideas and reading, any limit you can see (pace, violence, length, tone), and how my recent reads change the picture. Where the evidence is thin, say so instead of guessing.",
+      "", REPLY, '{"type":"taste","findings":[{"heading":"","text":""}]}']).join("\n");
+  }
+  function buildSale(o) {
+    var st = storeRow();
+    return ["You are my reading advisor. Tell me which books on my " + st[1] + " wishlist are worth buying at today's prices, using only my reading history below.", "", "MY READING HISTORY", historyText()].concat(showsBlock(), [""], HOW, ["",
+      "MY WISHLIST",
+      o.list ? "I have pasted my wishlist below, with prices where I know them:\n" + o.list :
+        "Open my " + st[1] + " wishlist in your browser and read every title, author, current price and, where shown, the usual price. If you cannot use a browser, ask me to paste the wishlist and stop. If I am not signed in, ask me to sign in myself and wait. Never type my password, never add anything to a basket and never buy anything. Only read.",
+      "",
+      "WHAT I WANT",
+      "Skip any book that is already in my history. Score every other wishlist book out of 100 twice: ideasFit and reading, as above. The page works out the overall match itself.",
+      "Mark onSale true only when the current price is lower than the usual price. If you do not recognise a book, score it from the title and author only and say so in the note.",
+      "", REPLY,
+      '{"type":"sale","store":"' + st[1] + '","currency":"the symbol the store shows","scanned":"YYYY-MM-DD","items":[{"title":"","author":"","price":0,"was":0,"onSale":true,"ideasFit":0,"reading":0,"note":"one short sentence that names a book from my history","url":"the book page link if you have it, otherwise empty"}]}']).join("\n");
   }
   function showPrompt(outId, textId, text) { $(textId).value = text; $(outId).hidden = false; }
   function wireCopy(btnId, textId) {
@@ -1155,12 +1374,219 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(function () { done(true); }, viaCommand); else viaCommand();
     });
   }
+
+  /* ---------- paste-back: the chatbot's answer becomes cards ---------- */
+  function extractJSON(text) {
+    var t = String(text || ""), m = t.match(/```(?:json|JSON)?\s*([\s\S]*?)```/);
+    var tries = [];
+    if (m && m[1].indexOf("{") >= 0) tries.push(m[1]);
+    tries.push(t);
+    for (var k = 0; k < tries.length; k++) {
+      var s = tries[k], a = s.indexOf("{"), b = s.lastIndexOf("}");
+      if (a < 0 || b < a) continue;
+      s = s.slice(a, b + 1);
+      var variants = [s, s.replace(/,\s*([}\]])/g, "$1"), s.replace(/[“”]/g, '"').replace(/,\s*([}\]])/g, "$1")];
+      for (var v = 0; v < variants.length; v++) { try { var o = JSON.parse(variants[v]); if (o && typeof o === "object") return o; } catch (e) {} }
+    }
+    return null;
+  }
+  function kindOf(o) {
+    if (o.type) return String(o.type).toLowerCase();
+    if (Array.isArray(o.books)) return "shelf";
+    if (Array.isArray(o.picks)) return "picks";
+    if (Array.isArray(o.findings)) return "taste";
+    if (Array.isArray(o.items)) return "sale";
+    if (o.title && (o.ideasFit != null || o.idea != null)) return "check";
+    return "";
+  }
+  function shelfFrom(x, title) {
+    var g = String(x.shelf || x.genre || "").toLowerCase().trim();
+    if (SHELVES.some(function (s) { return s.id === g; })) return g;
+    return guessShelf(g, title);
+  }
+  function addBooks(list) {
+    var have = {};
+    books().forEach(function (b) { have[(b.title + "|" + b.author).toLowerCase()] = true; });
+    var added = 0, skipped = 0;
+    list.forEach(function (x) {
+      var title = String(x.title || "").trim(); if (!title) return;
+      var author = String(x.author || "").trim() || "Unknown author", key = (title + "|" + author).toLowerCase();
+      if (have[key]) { skipped++; return; }
+      have[key] = true;
+      var s = String(x.status || "finished").toLowerCase();
+      var status = /dnf|did not|not finish|stopped|abandon|gave up/.test(s) ? "dnf" : /to-?read|not started|want|unread/.test(s) ? "toread" : "finished";
+      var why = /should/.test(String(x.why || "")) ? "should" : /want/.test(String(x.why || "")) ? "wanted" : /recommend/.test(String(x.why || "")) ? "recommended" : undefined;
+      var b = { id: newId(), title: title, author: author, shelf: shelfFrom(x, title), status: status, rating: status === "toread" ? null : numOrNull(x.rating), idea: numOrNull(x.ideas), pt: numOrNull(x.reading), when: String(x.when || "").slice(0, 20), note: String(x.note || "").slice(0, 300) };
+      if (why) b.why = why;
+      state.mine.push(b); added++;
+    });
+    if (added) state.sampleOff = true;
+    return { added: added, skipped: skipped };
+  }
+  function ingest(text) {
+    var o = extractJSON(text);
+    if (!o) return { error: "I could not find the data block in that. Copy the whole reply from your chatbot, including the grey box, and paste it again. Any other text around the box is fine." };
+    var kind = kindOf(o);
+    if (kind === "shelf") {
+      var r = addBooks(Array.isArray(o.books) ? o.books : []);
+      if (!r.added && !r.skipped) return { error: "That block had no books in it. Ask your chatbot to give you the shelf block again." };
+      save(); refreshAll();
+      return { ok: "Added " + r.added + (r.added === 1 ? " book" : " books") + (r.skipped ? " and skipped " + r.skipped + " you already had" : "") + " to your shelf.", view: "shelf" };
+    }
+    if (kind === "picks") {
+      var picks = (Array.isArray(o.picks) ? o.picks : []).map(function (p) {
+        var title = String(p.title || "").trim(); if (!title) return null;
+        var i = clamp(p.ideasFit != null ? p.ideasFit : p.idea), rd = clamp(p.reading != null ? p.reading : p.pageTurner);
+        return { title: title, author: String(p.author || "").trim(), shelf: shelfFrom(p, title), genre: String(p.genre || ""), idea: i, pt: rd, total: overall(i, rd), why: String(p.why || ""), watch: Array.isArray(p.watchOut) ? p.watchOut.map(String).filter(Boolean) : [] };
+      }).filter(Boolean);
+      if (!picks.length) return { error: "That block had no picks in it. Ask your chatbot to try again." };
+      state.recs = picks; save(); renderRecs();
+      return { ok: "Showing " + picks.length + " picks.", view: "recs" };
+    }
+    if (kind === "check") {
+      var title2 = String(o.title || "").trim(); if (!title2) return { error: "That block had no book title in it. Ask your chatbot to try again." };
+      var ci = clamp(o.ideasFit != null ? o.ideasFit : o.idea), cr = clamp(o.reading != null ? o.reading : o.pageTurner);
+      state.lastCheck = { title: title2, author: String(o.author || "").trim(), shelf: shelfFrom(o, title2), genre: String(o.genre || ""), idea: ci, pt: cr, total: overall(ci, cr), verdict: String(o.verdict || ""), confidence: String(o.confidence || ""), because: Array.isArray(o.because) ? o.because.map(String) : [], watch: Array.isArray(o.watchOut) ? o.watchOut.map(String).filter(Boolean) : [] };
+      save(); renderCheck();
+      return { ok: "Showing the match for " + title2 + ".", view: "check" };
+    }
+    if (kind === "taste") {
+      var f = (Array.isArray(o.findings) ? o.findings : []).map(function (x) { return [String(x.heading || "").trim(), String(x.text || "").trim()]; }).filter(function (x) { return x[0] && x[1]; });
+      if (!f.length) return { error: "That block had no findings in it. Ask your chatbot to try again." };
+      state.taste = f; state.tasteDate = new Date().toISOString().slice(0, 10); save(); renderFindings();
+      return { ok: "Showing " + f.length + " findings.", view: "profile" };
+    }
+    if (kind === "sale") {
+      var items = (Array.isArray(o.items) ? o.items : []).map(function (x) {
+        var t = String(x.title || "").trim(); if (!t) return null;
+        var i = clamp(x.ideasFit != null ? x.ideasFit : x.idea), rd = clamp(x.reading != null ? x.reading : x.pageTurner);
+        return { title: t, author: String(x.author || "").trim(), price: x.price, was: x.was, onSale: x.onSale === true || x.onSale === "true", idea: i, pt: rd, total: overall(i, rd), note: String(x.note || ""), url: /^https?:\/\//i.test(String(x.url || "")) ? String(x.url) : "" };
+      }).filter(Boolean);
+      if (!items.length) return { error: "That block had no books in it. Ask your chatbot to try again." };
+      state.sale = { store: String(o.store || storeRow()[1]), currency: String(o.currency || ""), scanned: String(o.scanned || new Date().toISOString().slice(0, 10)), items: items }; save(); renderSale();
+      return { ok: "Showing " + items.length + " wishlist books.", view: "sale" };
+    }
+    return { error: "I did not recognise that block. It should start with a line like \"type\": \"shelf\", \"picks\", \"check\", \"taste\" or \"sale\"." };
+  }
+  function pasteBox(hostId, title, lede) {
+    var host = $(hostId); if (!host) return;
+    var ta = el("textarea", { placeholder: "Paste the whole reply here", "aria-label": "Your chatbot's reply" }), st = el("span", { class: "status", role: "status", "aria-live": "polite" });
+    var go = el("button", { class: "btn", type: "button", text: "Show it on the page", onclick: function () {
+      if (!ta.value.trim()) { say(st, "Paste your chatbot's reply into the box first."); return; }
+      var r = ingest(ta.value);
+      if (r.error) { say(st, r.error); return; }
+      ta.value = ""; say(st, r.ok); show(r.view);
+    } });
+    host.appendChild(el("h3", { text: title }));
+    host.appendChild(el("p", { class: "lede", text: lede }));
+    host.appendChild(el("div", { class: "pastebox" }, [ta, el("div", { class: "linkrow" }, [go, st])]));
+  }
+
+  /* ---------- Read next, Will I like it, Sale watch ---------- */
+  function meter(label, v) {
+    var f = el("div", { class: "fill " + (v >= 70 ? "" : v >= 50 ? "mid" : "low") }); f.style.width = v + "%";
+    return el("div", { class: "meter" }, [el("span", { text: label }), el("div", { class: "track" }, [f]), el("b", { text: String(v) })]);
+  }
+  function onShelf(title) { var t = title.toLowerCase(); return books().some(function (b) { return b.title.toLowerCase() === t; }); }
+  function addToShelf(r) {
+    if (onShelf(r.title)) return;
+    state.mine.push({ id: newId(), title: r.title, author: r.author || "Unknown author", shelf: r.shelf || "other", status: "toread", rating: null, idea: null, pt: null, when: "", note: "" });
+    save(); refreshAll();
+  }
+  function actionRow(r, extra) {
+    return el("div", { class: "btnrow" }, [
+      el("button", { class: "addbtn", type: "button", text: "Add it to my shelf", onclick: function () { addToShelf(r); renderRecs(); renderCheck(); renderPile(); } }),
+      el("a", { class: "klink", href: storeUrl(r.title, r.author), target: "_blank", rel: "noopener noreferrer", text: "Find it on " + storeRow()[2] + " ↗" })
+    ].concat(extra || []));
+  }
+  function bookCard(r, extra) {
+    return el("article", { class: "card" }, [
+      el("div", { class: "thumb" }, [cover({ title: r.title, author: r.author || "", shelf: r.shelf })]),
+      el("div", { class: "body" }, [
+        el("div", { class: "title" }, [r.title, r.confidence ? el("span", { class: "conf", text: r.confidence + " confidence" }) : null]),
+        el("div", { class: "by", text: r.author }),
+        (r.genre || r.shelf) ? el("div", { class: "gline", text: r.genre && r.genre.toLowerCase() !== r.shelf ? r.genre : shelfOf(r.shelf).name }) : null,
+        el("div", { class: "big" }, [String(r.total), el("small", { text: "% match" })]),
+        el("div", { class: "meters" }, [meter("Ideas fit", r.idea), meter("Page-turner", r.pt)]),
+        r.why || r.verdict ? el("p", { class: "why", text: r.why || r.verdict }) : null,
+        r.because && r.because.length ? el("ul", { class: "because" }, r.because.map(function (x) { return el("li", { text: x }); })) : null,
+        r.watch && r.watch.length ? el("div", { class: "flags" }, r.watch.map(function (f) { return el("span", { class: "flag", text: f }); })) : null,
+        actionRow(r, extra)
+      ])
+    ]);
+  }
+  function renderRecs() {
+    var host = $("recs-list"); if (!host) return;
+    host.textContent = "";
+    var list = (state.recs || []).filter(function (r) { return !r.gone && !onShelf(r.title); }).sort(function (a, b) { return b.total - a.total; });
+    if (!list.length) { host.appendChild(el("p", { class: "fine", text: state.recs && state.recs.length ? "You have dealt with every pick. Build a new prompt below for fresh ones." : "No picks yet. Build a prompt below, paste it into your chatbot, then paste the reply back here." })); return; }
+    list.forEach(function (r) {
+      host.appendChild(bookCard(r, [el("button", { class: "linkbtn", type: "button", style: "color:var(--muted)", text: "Not for me", onclick: function () { r.gone = true; save(); renderRecs(); } })]));
+    });
+  }
+  function renderCheck() {
+    var host = $("c-result"); if (!host) return;
+    host.textContent = "";
+    var r = state.lastCheck; if (!r) return;
+    host.appendChild(bookCard(r, [el("button", { class: "linkbtn", type: "button", text: "Keep it on my to-read pile", onclick: function () { if (!state.pile.some(function (p) { return p.title === r.title; })) state.pile.push(r); save(); renderPile(); } })]));
+  }
+  function renderPile() {
+    var wrap = $("pile-wrap"), host = $("pile"); if (!host) return;
+    host.textContent = "";
+    var list = state.pile.filter(function (p) { return !onShelf(p.title); });
+    wrap.hidden = !list.length;
+    list.forEach(function (p) {
+      host.appendChild(bookCard(p, [el("button", { class: "linkbtn", type: "button", style: "color:var(--muted)", text: "Remove", onclick: function () { state.pile = state.pile.filter(function (x) { return x.title !== p.title; }); save(); renderPile(); } })]));
+    });
+  }
+  function money(v, cur) { if (v == null || v === "" || v === 0) return ""; return typeof v === "number" ? cur + v.toFixed(2) : String(v); }
+  var THRESHOLD = 80;
+  function renderSale() {
+    var host = $("sale-panel"); if (!host) return;
+    host.textContent = "";
+    var s = state.sale;
+    if (!s || !s.items || !s.items.length) { host.appendChild(el("p", { class: "fine", text: "No scan yet. Build a prompt above, run it in a chatbot that can use your browser, then paste the reply below." })); return; }
+    var items = s.items.slice().sort(function (a, b) {
+      var ba = a.onSale && a.total >= THRESHOLD ? 1 : 0, bb = b.onSale && b.total >= THRESHOLD ? 1 : 0;
+      return bb - ba || (b.onSale ? 1 : 0) - (a.onSale ? 1 : 0) || b.total - a.total;
+    });
+    var buy = items.filter(function (x) { return x.onSale && x.total >= THRESHOLD; }).length, sale = items.filter(function (x) { return x.onSale; }).length;
+    var box = el("div", { class: "kobo" });
+    box.appendChild(el("div", { class: "khead" }, [el("h3", { text: "Sale watch: " + s.store }), el("span", { class: "pill", text: "Scanned " + s.scanned })]));
+    box.appendChild(el("div", { class: "tiles" }, [
+      el("div", { class: "tile flag" }, [el("b", { text: String(buy) }), el("span", { text: "worth buying now" })]),
+      el("div", { class: "tile" }, [el("b", { text: String(sale) }), el("span", { text: "on sale" })]),
+      el("div", { class: "tile" }, [el("b", { text: String(items.length) }), el("span", { text: "on your wishlist" })])
+    ]));
+    items.forEach(function (x) {
+      var f = el("div", { class: "fill" + (x.total >= THRESHOLD ? " hi" : "") }); f.style.width = x.total + "%";
+      var tick = el("i", { class: "tick" }); tick.style.left = THRESHOLD + "%";
+      var href = x.url || storeUrl(x.title, x.author);
+      var price = el("div", { class: "kprice" }, [money(x.price, s.currency), x.onSale && x.was ? el("s", { text: money(x.was, s.currency) }) : null]);
+      box.appendChild(el("div", { class: "krow" + (x.onSale && x.total >= THRESHOLD ? " buy" : "") }, [
+        el("div", { class: "nm" }, [el("a", { class: "klink", href: href, target: "_blank", rel: "noopener noreferrer", text: x.title }), x.onSale ? el("span", { class: "ksale", text: "SALE" }) : null, el("small", { text: x.author + (x.note ? " · " + x.note : "") })]),
+        price,
+        el("div", { class: "ktrack", role: "img", "aria-label": x.total + " percent match" }, [f, tick]),
+        el("a", { class: "klink", href: href, target: "_blank", rel: "noopener noreferrer", "aria-label": "Find " + x.title + " on " + storeRow()[2], text: x.total + "↗" })
+      ]));
+    });
+    box.appendChild(el("p", { class: "ktick-key", text: "The dark line marks " + THRESHOLD + " percent, the match where a book on sale is worth buying." }));
+    host.appendChild(box);
+  }
+  function fillStores() {
+    document.querySelectorAll(".storesel").forEach(function (sel) {
+      sel.textContent = "";
+      STORES.forEach(function (s) { var o = el("option", { value: s[0], text: s[1] }); if (s[0] === state.store) o.selected = true; sel.appendChild(o); });
+      sel.addEventListener("change", function () { state.store = sel.value; save(); fillStores(); renderRecs(); renderCheck(); renderPile(); });
+    });
+  }
+
   $("picks-form").addEventListener("submit", function (ev) {
     ev.preventDefault();
     var msg = $("p-status");
     if (rated().length < 3) { say(msg, "Rate at least three books first, so the picks have something to go on."); return; }
     say(msg, "");
-    showPrompt("p-out", "p-text", buildPicks({ count: $("p-count").value, format: $("p-format").value, extra: $("p-extra").value.trim(), weekly: $("p-weekly").checked }));
+    showPrompt("p-out", "p-text", buildPicks({ count: $("p-count").value, format: $("p-format").value, extra: $("p-extra").value.trim() }));
   });
   $("check-form").addEventListener("submit", function (ev) {
     ev.preventDefault();
@@ -1169,19 +1595,39 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     say(msg, "");
     showPrompt("c-out", "c-text", buildCheck({ title: $("c-title").value.trim(), author: $("c-author").value.trim(), notes: $("c-notes").value.trim() }));
   });
-  wireCopy("p-copy", "p-text"); wireCopy("c-copy", "c-text");
+  $("sale-form").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var msg = $("s-status");
+    if (rated().length < 3) { say(msg, "Rate at least three books first, so the scores have something to go on."); return; }
+    say(msg, "");
+    showPrompt("s-out", "s-text", buildSale({ list: $("s-list").value.trim() }));
+  });
+  $("taste-build").addEventListener("click", function () {
+    var msg = $("t-status");
+    if (rated().length < 3) { say(msg, "Rate at least three books first."); return; }
+    say(msg, ""); showPrompt("t-out", "t-text", buildTaste());
+  });
+  wireCopy("p-copy", "p-text"); wireCopy("c-copy", "c-text"); wireCopy("s-copy", "s-text"); wireCopy("t-copy", "t-text"); wireCopy("one-copy", "one-text");
+  $("one-text").value = ONE_LINE;
+  var PB = "Your chatbot ends its reply with a grey box of data. Copy the whole reply, paste it here, and the page turns it into cards. Nothing is sent anywhere.";
+  pasteBox("pb-setup", "Paste what your chatbot gives you", "When your chatbot has finished asking about your books, it gives you a grey box with your shelf in it. Copy the whole reply and paste it here. Books you already have are skipped.");
+  pasteBox("pb-recs", "Paste your chatbot's picks", PB);
+  pasteBox("pb-check", "Paste your chatbot's answer", PB);
+  pasteBox("pb-sale", "Paste your chatbot's scan", PB);
+  pasteBox("pb-taste", "Paste your chatbot's answer", PB);
 
   /* ---------- tabs and wiring ---------- */
   function show(view) {
-    ["shelf", "add", "picks", "profile", "guide"].forEach(function (v) {
+    ["shelf", "add", "recs", "check", "sale", "profile", "guide"].forEach(function (v) {
       $("view-" + v).hidden = v !== view;
       $("filterbar").hidden = view !== "shelf";
       $("t-" + v).setAttribute("aria-selected", String(v === view));
     });
     if (view === "profile") renderProfile();
     if (view === "guide") renderGuide();
+    if (view === "recs") renderRecs();
   }
-  function refreshAll() { renderShelf(); if (!$("view-profile").hidden) renderProfile(); if (!$("view-guide").hidden) renderGuide(); }
+  function refreshAll() { renderShelf(); renderRecs(); renderPile(); if (!$("view-profile").hidden) renderProfile(); if (!$("view-guide").hidden) renderGuide(); }
 
   document.querySelectorAll(".tab").forEach(function (t) { t.addEventListener("click", function () { show(t.getAttribute("data-view")); }); });
   document.querySelectorAll(".chip").forEach(function (c) {
@@ -1195,7 +1641,8 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("drawer").hidden) closeDrawer(); });
 
   fillShelfSelect();
-  renderShelf();
+  fillStores();
+  renderShelf(); renderRecs(); renderCheck(); renderPile(); renderSale();
 })();
 </script>
 </body>

@@ -13,7 +13,9 @@ Run through this before you share the link. It takes about 15 minutes.
 - [ ] Phone width: nothing runs off the screen
 
 ## With a chatbot
-- [ ] Get picks: copy the prompt, paste it into Claude, ChatGPT and Gemini, check you get 5 picks with scores
+- [ ] Read next: copy the prompt, paste it into Claude, ChatGPT and Gemini, paste each reply back and check you get picks as cards with match scores
+- [ ] One-link setup: paste the one line into a chatbot, answer its questions, paste the shelf block into Add books and check the books appear
+- [ ] Sale watch: paste a wishlist, paste the reply back and check the worth-buying rows and links
 - [ ] Will I like this book: try one you know and one that does not exist, the second should come back as low confidence
 
 ## For someone else

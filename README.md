@@ -27,18 +27,20 @@ I am 39 and I am still finding out what I like to read. For years I loved the id
 
 ## Two ways to use it
 
-- **Use the page.** You build a shelf, rate your books and copy a ready-made prompt. Go to [Start in five minutes](#start-in-five-minutes).
-- **Let a chatbot do it all.** You answer a few questions in a chat and skip the page. Go to [Want it all done for you?](#want-it-all-done-for-you).
+- **One link, and your chatbot sets it up (fastest).** You paste one line into Claude, ChatGPT or Gemini. It asks which books you have read, asks you to rate each one, and hands you a block to paste into the page. Go to [Set it up with one link](#set-it-up-with-one-link).
+- **Do it yourself on the page.** You build the shelf by hand or from a Goodreads export. Go to [Start in five minutes](#start-in-five-minutes).
+
+Either way the page does the display and your chatbot does the thinking. Each tab writes a prompt, you paste it into a chatbot, and you paste the reply back to see it as cards. Nothing leaves your browser, and no account is needed.
 
 ## Start in five minutes
 
 1. **Open the page.** Go to the live link above. You will see 13 sample books so you can look around first.
 2. **Add your own books.** Open the **Add books** tab and pick whichever option suits you (see below). When your own books are in, press **Clear the sample books** on the shelf.
 3. **Rate a few.** Click a book to open it, then set your rating and the two scores. Ten rated books is enough for good picks. Three is the minimum.
-4. **Get your prompt.** Open **Get picks**, choose how many picks you want and press **Build my prompt**, then **Copy the prompt**.
-5. **Paste it into a chatbot.** Use the Claude, ChatGPT or Gemini links under the prompt. Free plans work.
+4. **Get your picks.** Open **Read next**, choose how many picks you want and press **Build my prompt**, then **Copy the prompt**.
+5. **Paste it into a chatbot, then paste the reply back.** Use the Claude, ChatGPT or Gemini links under the prompt. Free plans work. Copy the whole reply, paste it into the box under the prompt and press **Show it on the page**. Your picks appear as cards.
 
-## Four ways to add books
+## Ways to add books
 
 ![The Add books tab](docs/add-books.png)
 
@@ -46,6 +48,7 @@ Aim for about 10 books with a rating, because that is when your patterns start t
 
 | Option | Best for | How |
 | --- | --- | --- |
+| Let your chatbot do it | Anyone who wants the least effort | Copy the one line from the top of the **Add books** tab into a chatbot, answer its questions and paste the block it gives you back into the page. See [Set it up with one link](#set-it-up-with-one-link). |
 | Start from ten titles | Anyone with no Goodreads history | Paste ten books you have read into a chatbot with [prompts/06-first-shelf-from-ten-books.md](prompts/06-first-shelf-from-ten-books.md). It writes a file you import, plus suggested Ideas and Reading scores for you to check. |
 | Import from Goodreads | Anyone with a long reading history | On Goodreads open **My Books**, then **Import and export**, then **Export Library**. Download the file, then choose it under **Import from Goodreads** on the Add books tab. Books you already have are skipped. |
 | Add one book | A short list, or books you read recently | Fill in the form on the Add books tab. Only the title is required. |
@@ -81,40 +84,61 @@ The shelf also has a key, **How to read your shelf**, that explains the number b
 
 ![What your shelf says about you](docs/taste.png)
 
-## Getting your recommendations
+## What each tab does
 
-![The Get picks tab with a ready prompt](docs/get-picks.png)
+| Tab | What it gives you |
+| --- | --- |
+| My shelf | Your books on a wooden shelf, with ratings, ribbons and the key. |
+| Add books | A one-line setup for your chatbot, Goodreads import, one-book form and backup. |
+| Read next | Picks scored on ideas fit and page-turner, each with a match percentage, **Add it to my shelf** and **Find it on** your store. |
+| Will I like it? | Type a book someone recommended and get a match score, reasons and cautions. Keep the ones you want on a to-read pile. |
+| Sale watch | Which wishlist books are worth buying while they are on sale. |
+| My taste | Your reading in pictures, a scorecard by genre, and findings written from your own ratings. A chatbot can write a deeper version. |
+| Genre guide | Every major genre explained with a drawing, even the ones you have not tried. |
 
-**What should I read next?** (the Get picks tab)
+![Read next with picks and match scores](docs/read-next.png)
 
-- Choose 3, 5 or 8 picks.
-- Choose a format: any, ebook or paperback, or audiobook.
-- Add anything to avoid or include, for example "nothing set in wartime".
-- Tick the weekly box if you want a repeating prompt (see below).
+### Read next and Will I like it?
 
-**Will I like this book?** (also on the Get picks tab)
+The picks and the match scores come from your chatbot, and the page does the sum. Your chatbot scores each book twice out of 100, for ideas fit and for how easily you will keep reading. The page then weights reading at 60 percent and ideas at 40 percent, so a brilliant idea you cannot get through does not rank first. For books you are unsure about, the chatbot says so and marks its confidence as low.
 
-Type a title that someone recommended. The prompt asks the chatbot to compare it with your shelf and score the ideas fit and ease of reading out of 100. If the chatbot does not recognise the book, it should say so and mark its confidence as low.
+Pick where you buy your books (Kobo UK or US, Kindle UK or US, or Bookshop.org) and every card gets a **Find it on** link that opens a search for that book in your store. Always glance at the picks before you buy. Chatbots occasionally invent books, and the prompt tells them to leave out any title they are unsure exists.
 
-Always glance at the picks before you buy. Chatbots occasionally invent books, and the prompt tells them to leave out any title they are unsure exists.
-
-## Picks every week
+### Picks every week
 
 The page cannot email you, because it has no server. You have three options, all free:
 
 | Option | How |
 | --- | --- |
-| Ask the chatbot to repeat it | Tick the weekly box, paste the prompt into a new chat and ask for fresh picks every Monday. |
+| Come back and rebuild the prompt | Update your shelf, press **Build my prompt** on Read next and paste the reply back. It takes about a minute. |
 | Use the chatbot's own scheduling | ChatGPT has a Tasks feature and Claude has scheduled tasks on some plans. Plans change, so check what yours offers. |
-| Set a calendar reminder | A repeating Monday reminder that says "get book picks". Update your shelf first so the prompt includes last week's reading. |
+| Set a calendar reminder | A repeating Monday reminder that says "get book picks". |
 
-## Sale watch
+### Sale watch
 
-If you buy ebooks, you can ask a chatbot which wishlist books are worth buying when they drop in price. The page cannot watch prices itself, so you paste your wishlist with today's prices, or let a chatbot that can browse check them. The prompt is in [prompts/05-sale-watch.md](prompts/05-sale-watch.md), along with free price-alert services such as eReaderIQ and BookBub.
+![Sale watch with matches](docs/sale-watch.png)
 
-## Want it all done for you?
+Your chatbot reads your wishlist and scores each book against your shelf. The page then shows the ones that are on sale and score 80 or more as **worth buying now**, with the price, the old price and a link to the book.
 
-You do not need the page or the guide for this. A chatbot can do the whole job. Pick the way that suits you.
+There are two ways to get the wishlist to the chatbot:
+
+- **Let it browse.** Use a chatbot that can use your browser, such as Claude in Chrome or ChatGPT's agent mode. Sign in to your Kobo or Amazon account yourself when it asks. The prompt tells it to only read: it must never type your password, add anything to a basket or buy anything.
+- **Paste it.** Copy your wishlist (titles, authors and prices) into the box on the Sale watch tab and the prompt carries it for you.
+
+Free price-alert services such as eReaderIQ and BookBub are also listed in [prompts/05-sale-watch.md](prompts/05-sale-watch.md).
+
+## Set it up with one link
+
+You do not need to touch the page until the end. Your chatbot does the interview, and you paste one block into the page.
+
+**What happens**
+
+1. You paste one line into a chatbot.
+2. It asks for your books. If you have a Goodreads, StoryGraph or Kobo export, give it that and it asks far fewer questions. Otherwise it asks for 10 or more titles.
+3. It asks you to rate each book from 1 to 5 on three questions: Rating, Ideas and Reading (the table above). It also asks whether you finished it, why you picked it up and roughly when you read it.
+4. It shows you the scores to correct, tells you what it has noticed about your taste, and gives you a block of data.
+5. You paste that block into the **Add books** tab. Your shelf appears.
+6. It then offers three extras: first picks, a taste write-up and a sale scan of your Kobo or Kindle wishlist. Each one comes back as another block that you paste into the matching tab.
 
 | | The one-line way | The copy-and-paste way |
 | --- | --- | --- |
@@ -124,7 +148,7 @@ You do not need the page or the guide for this. A chatbot can do the whole job. 
 
 ### The one-line way
 
-Paste this into your chatbot and send it. If the chatbot says it cannot open the link, use the copy-and-paste way instead.
+Paste this into your chatbot and send it. The **Add books** tab on the page has the same line with a copy button. If the chatbot says it cannot open the link, use the copy-and-paste way instead.
 
 ```
 Read https://raw.githubusercontent.com/lifeofaelita/bookshelf/main/for-chatbots.md and follow the instructions in it.
@@ -132,45 +156,13 @@ Read https://raw.githubusercontent.com/lifeofaelita/bookshelf/main/for-chatbots.
 
 ### The copy-and-paste way
 
-1. Open a chatbot you already use, such as Claude, ChatGPT or Gemini. The free version is enough.
-2. Press **Show the prompt to copy** below, then copy all of the text in the box. A copy button appears in the top right corner of the box.
-3. Paste it into a new chat and send it.
-4. Answer the questions it asks about the books you have read. It works out the scores and gives you picks.
-
-If the box will not open for you, the same text is in [this file](prompts/00-do-it-all-for-me.md), and you copy and paste it in the same way.
-
-<details>
-<summary>Show the prompt to copy</summary>
-
-```
-You are my reading advisor. I want you to learn my taste and then recommend what to read next. Do all the work for me and keep it easy: ask me one thing at a time, in plain language.
-
-STEP 1. Ask me for up to 10 books I have read. For each one ask for the title, the author if I know it, and a few words on what I thought, including any book I stopped reading and why. Carry on with whatever I give you as long as it is at least 3 books, and tell me that more books give better picks.
-
-STEP 2. From my words, work out three scores out of 5 for each book:
-- Rating: how much I enjoyed it overall.
-- Ideas: how much the subject or story stayed with me.
-- Reading: how easy it was to keep turning the pages, judged by pace, structure and voice.
-Base every score only on what I said. If my words do not say enough, ask me one short question instead of guessing. Show the scores in a table and ask me to correct any that look wrong.
-
-STEP 3. Use these rules when you read the scores:
-- A book with high ideas and low reading is a problem with the style, not with the topic.
-- A book I did not finish tells you about style and pacing, even when I did not say why.
-- A book I read only because I felt I should is weaker evidence about my topics than one I chose with enthusiasm.
-- Books I read recently count more than books from long ago.
-
-STEP 4. Tell me what you have noticed in four or five sentences: what earns a five from me and what makes me stop. Name books from my list.
-
-STEP 5. Recommend 5 books I have not read. For each one give the title and author, the genre, two scores out of 100 (ideas fit and how easy it will be to keep reading), one sentence of reasoning that names a book from my list, and one thing to watch out for. Order them by overall match, weighting ease of reading at 60 percent and ideas fit at 40 percent. If you are not sure a book exists, leave it out.
-
-STEP 6. Tell me I can come back to this chat any week, say what I have read, finished or dropped, and you will give me fresh picks without repeating a book.
-```
-
-</details>
+1. Open [for-chatbots.md](for-chatbots.md) and press the copy icon at the top right of the file.
+2. Paste it into a new chat with Claude, ChatGPT, Gemini or any other chatbot, and send it.
+3. Answer the questions, then paste the block it gives you into the **Add books** tab.
 
 ## Use it without the page
 
-The **prompts** folder holds plain-text versions you can paste straight into a chatbot: do everything for you, build a taste profile, weekly picks, check a single book, sort books into shelves, and build your first shelf from ten books.
+The **prompts** folder holds plain-text versions you can paste straight into a chatbot: do everything for you, build a taste profile, weekly picks, check a single book, sort books into shelves, and build your first shelf from ten books. They answer in plain text. The page and the one-link setup use the data-block versions, which the page can turn into cards.
 
 ## Your data and privacy
 
