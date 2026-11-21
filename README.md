@@ -88,6 +88,10 @@ The page cannot email you, because it has no server. You have three options, all
 | Use the chatbot's own scheduling | ChatGPT has a Tasks feature and Claude has scheduled tasks on some plans. Plans change, so check what yours offers. |
 | Set a calendar reminder | A repeating Monday reminder that says "get book picks". Update your shelf first so the prompt includes last week's reading. |
 
+## Sale watch
+
+If you buy ebooks, you can ask a chatbot which wishlist books are worth buying when they drop in price. The page cannot watch prices itself, so you paste your wishlist with today's prices, or let a chatbot that can browse check them. The prompt is in [prompts/05-sale-watch.md](prompts/05-sale-watch.md), along with free price-alert services such as eReaderIQ and BookBub.
+
 ## Your data and privacy
 
 - Everything is saved in your browser on your device. Nothing is uploaded to a server.
