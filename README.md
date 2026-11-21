@@ -54,13 +54,15 @@ Open any book and you will see three controls.
 
 ![Open a book to rate it](docs/book-drawer.png)
 
-| Control | What it measures | Example |
-| --- | --- | --- |
-| Rating | How much you enjoyed it overall, 1 to 5 | 3 stars |
-| Ideas | How much the subject and ideas mattered to you, 1 to 5 | 5 |
-| Reading | How easy it was to keep reading, judged by pace, structure and voice, 1 to 5 | 2 |
+| Control | The question to ask yourself | A 1 means | A 5 means |
+| --- | --- | --- | --- |
+| Rating | Did I enjoy this book overall? | I disliked it | I loved it |
+| Ideas | Did the subject or story stay with me, so that I kept thinking about it afterwards? | It left no mark | I still think about it |
+| Reading | Was it easy to keep turning the pages? | A slog, and I pushed through or stopped | I could not put it down |
 
-That example is a book you found brilliant and a slog. It tells the chatbot that the topic suits you and the style does not, so it should suggest a lighter, story-led book on the same subject instead of another heavy one.
+Ideas is about what the book gave you, not about how it was written. For a novel, read it as the story, the characters and what they made you think about. Reading is about the writing itself: the pace, the structure and the voice.
+
+Take a book on sleep science that fascinated you and that you still talk about, but that read like a textbook. You might give it a rating of 3, ideas 5 and reading 2. That tells the chatbot the topic suits you and the style does not, so it should suggest a lighter, story-led book on the same subject instead of another heavy one.
 
 A few more rules the prompt passes on to the chatbot:
 
