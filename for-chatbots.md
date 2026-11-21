@@ -65,7 +65,7 @@ After the code block, tell me, in two sentences:
 
 ## Step 5: offer the extras
 
-Ask me which of these I want next. I can say none, one or all of them. Give each one as a single JSON object in a code block with nothing after it, and tell me which box on the page it goes into.
+Ask me which of these I want next. I can say none, one or all of them. Also ask which store I buy from (Kobo, Kindle or Bookshop.org), so that you can name it below. Give each one as a single JSON object in a code block with nothing after it, and tell me which box on the page it goes into.
 
 ### Picks (the Read next tab)
 
@@ -104,6 +104,8 @@ This works only if you can use a browser. If you cannot, ask me to paste my wish
 ```json
 {"type":"sale","store":"Kobo (UK)","currency":"the symbol the store shows","scanned":"YYYY-MM-DD","items":[{"title":"","author":"","price":0,"was":0,"onSale":true,"ideasFit":0,"reading":0,"note":"one short sentence that names a book from my list","url":"the book page link if you have it, otherwise empty"}]}
 ```
+
+After each extra, tell me in one sentence what the page adds when I paste the block in. The picks and the book checks become cards with a match score, an **Add it to my shelf** button that puts the book on my shelf as not started, and a **Find it on** button (named after my store) that opens a search for that book. I can change the store on the tab. The sale scan shows which wishlist books are worth buying now, with the price and a link to each one. Say this as an offer, not an instruction, and only once per reply.
 
 ## Step 6: coming back
 
