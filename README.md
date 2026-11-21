@@ -2,61 +2,128 @@
 
 A free bookshelf that learns what you like to read, then writes the prompt for your own chatbot to recommend what to read next.
 
-No sign-up, no server, no cost. Your books stay in your browser. The recommendations come from the chatbot you already use (Claude, ChatGPT or Gemini, free plans work).
+**[Open the live bookshelf](https://lifeofaelita.github.io/bookshelf/)**. There is nothing to install, no account to make and nothing to pay for.
 
 ![Your shelf](docs/shelf.png)
 
-## What it does
+## What it does, and what it does not
 
-- **My shelf**: your books on a wooden shelf, sorted by genre
-- **Add books**: type them in, or import your Goodreads export
-- **Get picks**: builds a ready-to-paste prompt from your ratings, for any chatbot
-- **My taste**: shows what earns a five from you and what makes you stop
-- **Genre guide**: explains how genres fit together and where you sit
+Most book apps ask for a star rating and stop there. This one asks two questions about every book: how much the ideas mattered to you, and how easy it was to keep reading. That second score is what explains why you gave up on a book you were sure you would love.
 
-![Your taste](docs/taste.png)
+- It shows your books on a wooden shelf, sorted by genre.
+- It works out what earns a five from you and what makes you stop.
+- It writes a ready-made prompt from your shelf. You paste that prompt into Claude, ChatGPT or Gemini and the chatbot suggests what to read next.
+- It does not run any AI itself, send emails or collect your data. That is why it costs nothing.
 
-## Try it
+## Start in five minutes
 
-Open the live page: **https://lifeofaelita.github.io/bookshelf/**
+1. **Open the page.** Go to the live link above. You will see 13 sample books so you can look around first.
+2. **Add your own books.** Open the **Add books** tab and pick whichever option suits you (see below). When your own books are in, press **Clear the sample books** on the shelf.
+3. **Rate a few.** Click a book to open it, then set your rating and the two scores. Ten rated books is enough for good picks. Three is the minimum.
+4. **Get your prompt.** Open **Get picks**, choose how many picks you want and press **Build my prompt**, then **Copy the prompt**.
+5. **Paste it into a chatbot.** Use the Claude, ChatGPT or Gemini links under the prompt. Free plans work.
 
-Or download this repo and open `index.html` in any browser. Nothing to install.
+## Three ways to add books
 
-## Make it yours in five steps
+![The Add books tab](docs/add-books.png)
 
-1. **Add your books.** On Add books, upload your Goodreads file (Goodreads: My Books, Import and export, Export library) or add books one at a time.
-2. **Open each book you care about** and set your rating, how much the ideas mattered and how easy it was to keep reading. Ten rated books is enough to start.
-3. **Open Get picks**, choose how many picks you want, and press the button.
-4. **Press Copy** and paste into Claude, ChatGPT or Gemini.
-5. **Tell the chatbot what you thought** and ask for another round. Add the new books back into the page when you finish them.
+| Option | Best for | How |
+| --- | --- | --- |
+| Import from Goodreads | Anyone with a long reading history | On Goodreads open **My Books**, then **Import and export**, then **Export Library**. Download the file, then choose it under **Import from Goodreads** on the Add books tab. Books you already have are skipped. |
+| Add one book | A short list, or books you read recently | Fill in the form on the Add books tab. Only the title is required. |
+| Import from another app | StoryGraph users | Export your library as a CSV file and import it the same way. The common column names are recognised, but not every export has been tested. |
 
-## Weekly picks
+Imported books land on the right shelf when the genre is clear, and on **Not sorted yet** when it is not. Open a book to move it. The file [prompts/04-sort-my-books.md](prompts/04-sort-my-books.md) shows how to ask a chatbot to sort a long list for you.
 
-The page does not send emails, because there is no server. Two free options:
+## How the two scores work
 
-- Paste the prompt into a chat and ask for new picks every Monday. If your chatbot plan offers scheduled tasks, you can set that up there, but features differ by plan.
-- Put a repeating reminder in your calendar: "Monday: get book picks". It takes two minutes.
+Open any book and you will see three controls.
 
-## Your data
+![Open a book to rate it](docs/book-drawer.png)
 
-Everything is saved in your browser on your device. Clearing browser data erases it, so use **Back up my shelf** now and then. You can restore the file on any device.
+| Control | What it measures | Example |
+| --- | --- | --- |
+| Rating | How much you enjoyed it overall, 1 to 5 | 3 stars |
+| Ideas | How much the subject and ideas mattered to you, 1 to 5 | 5 |
+| Reading | How easy it was to keep reading, judged by pace, structure and voice, 1 to 5 | 2 |
 
-## Prompts
+That example is a book you found brilliant and a slog. It tells the chatbot that the topic suits you and the style does not, so it should suggest a lighter, story-led book on the same subject instead of another heavy one.
 
-The `prompts/` folder holds plain versions you can use without the page: build a taste profile, weekly picks, check a single book, and sort books into shelves.
+A few more rules the prompt passes on to the chatbot:
 
-## Host your own copy for free
+- A book you did not finish is a clue about style, even when you do not say why.
+- A book you read because you felt you should counts for less than one you chose with enthusiasm. Mark this under **Why you picked it up**.
+- Recent reads count more than old ones. Fill in **When you read it** to help.
 
-1. Fork or download this repo.
-2. In GitHub, open Settings, Pages, choose the `main` branch and the root folder, and save.
-3. Your page appears at `https://YOUR-NAME.github.io/bookshelf/` after a minute.
+The shelf also has a key, **How to read your shelf**, that explains the number badges, the red ribbon (a five), the dark DNF badge and the TBR badge.
 
-## Testing
+![How to read your shelf](docs/key.png)
 
-See [TESTING.md](TESTING.md).
+![What your shelf says about you](docs/taste.png)
+
+## Getting your recommendations
+
+![The Get picks tab with a ready prompt](docs/get-picks.png)
+
+**What should I read next?** (the Get picks tab)
+
+- Choose 3, 5 or 8 picks.
+- Choose a format: any, ebook or paperback, or audiobook.
+- Add anything to avoid or include, for example "nothing set in wartime".
+- Tick the weekly box if you want a repeating prompt (see below).
+
+**Will I like this book?** (also on the Get picks tab)
+
+Type a title that someone recommended. The prompt asks the chatbot to compare it with your shelf and score the ideas fit and ease of reading out of 100. If the chatbot does not recognise the book, it should say so and mark its confidence as low.
+
+Always glance at the picks before you buy. Chatbots occasionally invent books, and the prompt tells them to leave out any title they are unsure exists.
+
+## Picks every week
+
+The page cannot email you, because it has no server. You have three options, all free:
+
+| Option | How |
+| --- | --- |
+| Ask the chatbot to repeat it | Tick the weekly box, paste the prompt into a new chat and ask for fresh picks every Monday. |
+| Use the chatbot's own scheduling | ChatGPT has a Tasks feature and Claude has scheduled tasks on some plans. Plans change, so check what yours offers. |
+| Set a calendar reminder | A repeating Monday reminder that says "get book picks". Update your shelf first so the prompt includes last week's reading. |
+
+## Your data and privacy
+
+- Everything is saved in your browser on your device. Nothing is uploaded to a server.
+- It is saved per browser and per device. A different computer, or a private window, starts empty.
+- Clearing your browser data erases the shelf. Press **Download a backup** now and then. To move to a new device, open the page there and press **Restore from a backup**.
+- **Start again** erases everything and asks you to tap twice so it cannot happen by accident.
+- Book covers load from Open Library when an imported book has an ISBN. Books without one get a coloured cover with the title.
+
+## If something goes wrong
+
+| Problem | Fix |
+| --- | --- |
+| The shelf is empty after I came back | You are in a different browser, a private window or on another device. Restore your backup file. |
+| The import added no books | Make sure you chose the exported CSV file and that it has a Title column. |
+| Most books are on Not sorted yet | Open a book to choose its shelf, or ask a chatbot to sort the list with prompts/04-sort-my-books.md. |
+| The Build my prompt button asks for more ratings | Rate at least three books first. |
+| The Copy button does not work | Click inside the prompt box and press Ctrl+C or Cmd+C. |
+
+## Use it without the page
+
+The **prompts** folder holds plain-text versions you can paste straight into a chatbot: build a taste profile, weekly picks, check a single book, and sort books into shelves.
+
+## Run your own copy
+
+1. Press **Fork** at the top of this repository, or download it with **Code, Download ZIP**.
+2. To open it on your computer, unzip it and double-click **index.html**.
+3. To host it free on GitHub Pages: in your fork open **Settings**, then **Pages**, choose the **main** branch and the **/ (root)** folder, and press Save. Your page appears at your-name.github.io/bookshelf after a minute or two.
+
+The code is one HTML file plus the **fonts** and **wood** folders. There is nothing to build.
+
+![Genre guide](docs/genre-guide.png)
+
+## Checking it works
+
+[TESTING.md](TESTING.md) is a 15-minute checklist covering the page, a phone and a chatbot. [examples/sample-goodreads-export.csv](examples/sample-goodreads-export.csv) is a small file you can use to try the import.
 
 ## Credits
 
-Built by [Aelita](https://github.com/lifeofaelita) with Claude. Sample books are examples only, and the ratings on them are made up. Book covers come from Open Library when your import includes an ISBN.
-
-Licence: MIT.
+Built by [Aelita](https://github.com/lifeofaelita) with Claude. The sample books are examples only and their ratings are made up. Licence: MIT, so you are free to use and change it.
