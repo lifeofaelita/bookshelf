@@ -15,6 +15,16 @@ Most book apps ask for a star rating and stop there. This one asks two questions
 - It writes a ready-made prompt from your shelf. You paste that prompt into Claude, ChatGPT or Gemini and the chatbot suggests what to read next.
 - It does not run any AI itself, send emails or collect your data. That is why it costs nothing.
 
+## Why not Kindle or Kobo recommendations?
+
+Kindle and Kobo learn from what you buy and how many stars you give. That works while your taste stays put. Mine did not. Over the years my style changed so much that the suggestions kept describing a reader I no longer was, because every old purchase counted as much as last month's.
+
+A star rating also hides the reason behind it. A three-star book might have been brilliant and heavy going, or easy and forgettable, and a store cannot tell which. The two scores here separate those cases, and a book you gave up on tells the chatbot something too.
+
+## Why I built it
+
+I am 39 and I am still finding out what I like to read. For years I loved the idea of the books I was supposed to read, then struggled once I started them. This year was about learning what I enjoy and being fine with the fact that not every book has to be educational. The bookshelf is how I keep track of that, and it is why the reading score sits next to the ideas score.
+
 ## Start in five minutes
 
 1. **Open the page.** Go to the live link above. You will see 13 sample books so you can look around first.
