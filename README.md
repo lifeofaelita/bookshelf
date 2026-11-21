@@ -2,7 +2,7 @@
 
 A free bookshelf that learns what you like to read, then writes the prompt for your own chatbot to recommend what to read next.
 
-**[Open the live bookshelf](https://lifeofaelita.github.io/bookshelf/)**. There is nothing to install, no account to make and nothing to pay for.
+**[Open the live bookshelf](https://lifeofaelita.github.io/bookshelf/)**. There is nothing to install, no account to make and nothing to pay for. Hold Ctrl (or Cmd on a Mac) while you click to open it in a new tab and keep this page open.
 
 ![Your shelf](docs/shelf.png)
 
@@ -25,61 +25,10 @@ A star rating also hides the reason behind it. A three-star book might have been
 
 I am 39 and I am still finding out what I like to read. For years I loved the idea of the books I was supposed to read, then struggled once I started them. This year was about learning what I enjoy and being fine with the fact that not every book has to be educational. The bookshelf is how I keep track of that, and it is why the reading score sits next to the ideas score.
 
-## Want it all done for you?
+## Two ways to use it
 
-You do not need the page or the guide for this. A chatbot can do the whole job. Pick the way that suits you.
-
-| | The one-line way | The copy-and-paste way |
-| --- | --- | --- |
-| Best for | Anyone on a phone, or anyone who wants the least effort | A chatbot that cannot open links, or anyone who wants to read the instructions before sending them |
-| Works with | Chatbots that can open links, such as Claude, ChatGPT and Gemini. On free plans this can depend on whether browsing is switched on. | Any chatbot at all |
-| What you do | Paste one line and send it | Copy a block of text, paste it and send it |
-
-### The one-line way
-
-Paste this into your chatbot and send it. If the chatbot says it cannot open the link, use the copy-and-paste way instead.
-
-```
-Read https://raw.githubusercontent.com/lifeofaelita/bookshelf/main/for-chatbots.md and follow the instructions in it.
-```
-
-### The copy-and-paste way
-
-1. Open a chatbot you already use, such as Claude, ChatGPT or Gemini. The free version is enough.
-2. Press **Show the prompt to copy** below, then copy all of the text in the box. A copy button appears in the top right corner of the box.
-3. Paste it into a new chat and send it.
-4. Answer the questions it asks about the books you have read. It works out the scores and gives you picks.
-
-If the box will not open for you, the same text is in [this file](prompts/00-do-it-all-for-me.md), and you copy and paste it in the same way.
-
-<details>
-<summary>Show the prompt to copy</summary>
-
-```
-You are my reading advisor. I want you to learn my taste and then recommend what to read next. Do all the work for me and keep it easy: ask me one thing at a time, in plain language.
-
-STEP 1. Ask me for up to 10 books I have read. For each one ask for the title, the author if I know it, and a few words on what I thought, including any book I stopped reading and why. Carry on with whatever I give you as long as it is at least 3 books, and tell me that more books give better picks.
-
-STEP 2. From my words, work out three scores out of 5 for each book:
-- Rating: how much I enjoyed it overall.
-- Ideas: how much the subject or story stayed with me.
-- Reading: how easy it was to keep turning the pages, judged by pace, structure and voice.
-Base every score only on what I said. If my words do not say enough, ask me one short question instead of guessing. Show the scores in a table and ask me to correct any that look wrong.
-
-STEP 3. Use these rules when you read the scores:
-- A book with high ideas and low reading is a problem with the style, not with the topic.
-- A book I did not finish tells you about style and pacing, even when I did not say why.
-- A book I read only because I felt I should is weaker evidence about my topics than one I chose with enthusiasm.
-- Books I read recently count more than books from long ago.
-
-STEP 4. Tell me what you have noticed in four or five sentences: what earns a five from me and what makes me stop. Name books from my list.
-
-STEP 5. Recommend 5 books I have not read. For each one give the title and author, the genre, two scores out of 100 (ideas fit and how easy it will be to keep reading), one sentence of reasoning that names a book from my list, and one thing to watch out for. Order them by overall match, weighting ease of reading at 60 percent and ideas fit at 40 percent. If you are not sure a book exists, leave it out.
-
-STEP 6. Tell me I can come back to this chat any week, say what I have read, finished or dropped, and you will give me fresh picks without repeating a book.
-```
-
-</details>
+- **Use the page.** You build a shelf, rate your books and copy a ready-made prompt. Go to [Start in five minutes](#start-in-five-minutes).
+- **Let a chatbot do it all.** You answer a few questions in a chat and skip the page. Go to [Want it all done for you?](#want-it-all-done-for-you).
 
 ## Start in five minutes
 
@@ -163,6 +112,66 @@ The page cannot email you, because it has no server. You have three options, all
 
 If you buy ebooks, you can ask a chatbot which wishlist books are worth buying when they drop in price. The page cannot watch prices itself, so you paste your wishlist with today's prices, or let a chatbot that can browse check them. The prompt is in [prompts/05-sale-watch.md](prompts/05-sale-watch.md), along with free price-alert services such as eReaderIQ and BookBub.
 
+## Want it all done for you?
+
+You do not need the page or the guide for this. A chatbot can do the whole job. Pick the way that suits you.
+
+| | The one-line way | The copy-and-paste way |
+| --- | --- | --- |
+| Best for | Anyone on a phone, or anyone who wants the least effort | A chatbot that cannot open links, or anyone who wants to read the instructions before sending them |
+| Works with | Chatbots that can open links, such as Claude, ChatGPT and Gemini. On free plans this can depend on whether browsing is switched on. | Any chatbot at all |
+| What you do | Paste one line and send it | Copy a block of text, paste it and send it |
+
+### The one-line way
+
+Paste this into your chatbot and send it. If the chatbot says it cannot open the link, use the copy-and-paste way instead.
+
+```
+Read https://raw.githubusercontent.com/lifeofaelita/bookshelf/main/for-chatbots.md and follow the instructions in it.
+```
+
+### The copy-and-paste way
+
+1. Open a chatbot you already use, such as Claude, ChatGPT or Gemini. The free version is enough.
+2. Press **Show the prompt to copy** below, then copy all of the text in the box. A copy button appears in the top right corner of the box.
+3. Paste it into a new chat and send it.
+4. Answer the questions it asks about the books you have read. It works out the scores and gives you picks.
+
+If the box will not open for you, the same text is in [this file](prompts/00-do-it-all-for-me.md), and you copy and paste it in the same way.
+
+<details>
+<summary>Show the prompt to copy</summary>
+
+```
+You are my reading advisor. I want you to learn my taste and then recommend what to read next. Do all the work for me and keep it easy: ask me one thing at a time, in plain language.
+
+STEP 1. Ask me for up to 10 books I have read. For each one ask for the title, the author if I know it, and a few words on what I thought, including any book I stopped reading and why. Carry on with whatever I give you as long as it is at least 3 books, and tell me that more books give better picks.
+
+STEP 2. From my words, work out three scores out of 5 for each book:
+- Rating: how much I enjoyed it overall.
+- Ideas: how much the subject or story stayed with me.
+- Reading: how easy it was to keep turning the pages, judged by pace, structure and voice.
+Base every score only on what I said. If my words do not say enough, ask me one short question instead of guessing. Show the scores in a table and ask me to correct any that look wrong.
+
+STEP 3. Use these rules when you read the scores:
+- A book with high ideas and low reading is a problem with the style, not with the topic.
+- A book I did not finish tells you about style and pacing, even when I did not say why.
+- A book I read only because I felt I should is weaker evidence about my topics than one I chose with enthusiasm.
+- Books I read recently count more than books from long ago.
+
+STEP 4. Tell me what you have noticed in four or five sentences: what earns a five from me and what makes me stop. Name books from my list.
+
+STEP 5. Recommend 5 books I have not read. For each one give the title and author, the genre, two scores out of 100 (ideas fit and how easy it will be to keep reading), one sentence of reasoning that names a book from my list, and one thing to watch out for. Order them by overall match, weighting ease of reading at 60 percent and ideas fit at 40 percent. If you are not sure a book exists, leave it out.
+
+STEP 6. Tell me I can come back to this chat any week, say what I have read, finished or dropped, and you will give me fresh picks without repeating a book.
+```
+
+</details>
+
+## Use it without the page
+
+The **prompts** folder holds plain-text versions you can paste straight into a chatbot: do everything for you, build a taste profile, weekly picks, check a single book, sort books into shelves, and build your first shelf from ten books.
+
 ## Your data and privacy
 
 - Everything is saved in your browser on your device. Nothing is uploaded to a server.
@@ -180,10 +189,6 @@ If you buy ebooks, you can ask a chatbot which wishlist books are worth buying w
 | Most books are on Not sorted yet | Open a book to choose its shelf, or ask a chatbot to sort the list with prompts/04-sort-my-books.md. |
 | The Build my prompt button asks for more ratings | Rate at least three books first. |
 | The Copy button does not work | Click inside the prompt box and press Ctrl+C or Cmd+C. |
-
-## Use it without the page
-
-The **prompts** folder holds plain-text versions you can paste straight into a chatbot: do everything for you, build a taste profile, weekly picks, check a single book, sort books into shelves, and build your first shelf from ten books.
 
 ## Run your own copy
 
