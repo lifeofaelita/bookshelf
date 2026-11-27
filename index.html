@@ -724,20 +724,36 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
 
   /* ---------- data ---------- */
   var SHELVES = [
-    { id: "thriller", name: "Thrillers and crime" },
+    { id: "thriller", name: "Thrillers and suspense" },
+    { id: "mystery", name: "Mystery" },
     { id: "scifi", name: "Science fiction" },
     { id: "fantasy", name: "Fantasy" },
+    { id: "romance", name: "Romance" },
+    { id: "horror", name: "Horror" },
+    { id: "historical", name: "Historical fiction" },
     { id: "cosy", name: "Cosy and feel-good fiction" },
     { id: "literary", name: "Literary and general fiction" },
-    { id: "memoir", name: "Memoir and true stories" },
+    { id: "classics", name: "Classics" },
+    { id: "ya", name: "Young adult" },
+    { id: "humour", name: "Humour" },
+    { id: "graphic", name: "Graphic novels and comics" },
+    { id: "poetry", name: "Poetry" },
+    { id: "memoir", name: "Memoir and biography" },
     { id: "narrative", name: "Narrative non-fiction" },
+    { id: "history", name: "History" },
+    { id: "truecrime", name: "True crime" },
+    { id: "travel", name: "Travel and nature" },
     { id: "psych", name: "Psychology and science" },
     { id: "growth", name: "Self-help and personal growth" },
     { id: "spirit", name: "Spirituality and philosophy" },
+    { id: "business", name: "Business and money" },
+    { id: "health", name: "Health and wellbeing" },
+    { id: "food", name: "Food and cooking" },
+    { id: "politics", name: "Politics and society" },
     { id: "other", name: "Not sorted yet" }
   ];
-  var DOT = { thriller: "#f0386b", scifi: "#4d7cff", fantasy: "#c026d3", cosy: "#ff7ac6", literary: "#ff6b3d", memoir: "#00b8d9", narrative: "#7ed321", psych: "#10b981", growth: "#ffb100", spirit: "#8b5cf6", other: "#9fb6cc" };
-  var SHELF_COLOUR = { thriller: "#d61f57", scifi: "#2f5de0", fantasy: "#a21caf", cosy: "#d6409f", literary: "#e2501f", memoir: "#0891b2", narrative: "#5ea011", psych: "#0a9a6c", growth: "#e08a00", spirit: "#6d3fd9", other: "#5a6b7b" };
+  var DOT = { thriller: "#f0386b", mystery: "#c2410c", scifi: "#4d7cff", fantasy: "#c026d3", romance: "#e0489a", horror: "#6b4a8a", historical: "#c2873a", cosy: "#ff7ac6", literary: "#ff6b3d", classics: "#8d6e63", ya: "#0ea5e9", humour: "#facc15", graphic: "#ef4444", poetry: "#a78bfa", memoir: "#00b8d9", narrative: "#7ed321", history: "#b08968", truecrime: "#d61f57", travel: "#2b9d8f", psych: "#10b981", growth: "#ffb100", spirit: "#8b5cf6", business: "#3b82f6", health: "#34d399", food: "#fb923c", politics: "#64748b", other: "#9fb6cc" };
+  var SHELF_COLOUR = { thriller: "#d61f57", mystery: "#9a3412", scifi: "#2f5de0", fantasy: "#a21caf", romance: "#be2f7c", horror: "#4c3263", historical: "#9a6a24", cosy: "#d6409f", literary: "#e2501f", classics: "#5d4037", ya: "#0369a1", humour: "#ca8a04", graphic: "#b91c1c", poetry: "#7c5cd6", memoir: "#0891b2", narrative: "#5ea011", history: "#8a6a4a", truecrime: "#a3153f", travel: "#1f7a6f", psych: "#0a9a6c", growth: "#e08a00", spirit: "#6d3fd9", business: "#2563eb", health: "#059669", food: "#ea580c", politics: "#475569", other: "#5a6b7b" };
 
   // Sample books so the page is never empty. Ratings and scores are made up.
   var BASE = [
@@ -1078,33 +1094,49 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     steps: '<path d="M6 40h10V30h10V20h10V10h6"/>',
     sun: '<circle cx="24" cy="24" r="8"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M38 10l-4 4M14 34l-4 4"/>',
     chart: '<path d="M8 40V8M8 40h34"/><path d="M16 34v-6M24 34V20M32 34v-10M40 34V12"/>',
-    mountain: '<path d="M4 40l14-24 8 12 6-8 12 20z"/><path d="M14 22l4 4 4-4"/>'
+    mountain: '<path d="M4 40l14-24 8 12 6-8 12 20z"/><path d="M14 22l4 4 4-4"/>',
+    openbook: '<path d="M6 10c6-2 12-2 18 2 6-4 12-4 18-2v28c-6-2-12-2-18 2-6-4-12-4-18-2z"/><path d="M24 12v28"/>',
+    star: '<path d="M24 5l5.5 12 13 1.5-9.7 8.8 2.7 12.9L24 33l-11.5 7.2 2.7-12.9L5.5 18.5l13-1.5z"/>',
+    smile: '<circle cx="24" cy="24" r="18"/><path d="M16 28c2 5 14 5 16 0M17 19v2M31 19v2"/>',
+    bubble: '<path d="M6 10h36v22H24l-9 8v-8H6z"/><path d="M14 18h20M14 25h12"/>',
+    quill: '<path d="M40 8C24 8 13 17 12 33l-5 8"/><path d="M12 33c11 1 20-7 22-18M18 27h10"/>',
+    plus: '<circle cx="24" cy="24" r="17"/><path d="M24 15v18M15 24h18"/>',
+    fork: '<path d="M13 6v13c0 3 2 5 5 5v18M18 6v13M23 6v13"/><path d="M35 6c-4 3-5 9-5 16h5v20"/>',
+    globe: '<circle cx="24" cy="24" r="18"/><path d="M6 24h36M24 6c-8 9-8 27 0 36M24 6c8 9 8 27 0 36"/>'
   };
   // shelf: the shelf on your page that holds this genre, or null when the page has no shelf for it yet.
   var GENRES = [
     ["Invented stories (fiction)", "Made up. You read them for what happens next, or for how it feels.", [
       { n: "Literary fiction", icon: "book", c: "#ff6b3d", shelf: "literary", promise: "Stories where the writing and the people matter more than the plot.", why: "Sentences worth rereading, characters who feel real, and questions about families, society or being alive.", sign: "You remember how it felt more than what happened." },
-      { n: "Mystery", icon: "magnifier", c: "#f0386b", shelf: "thriller", promise: "Someone did something, and you work out who and why.", why: "Clues, red herrings and the click of a solved puzzle.", sign: "You flick back to check an earlier page." },
+      { n: "Mystery", icon: "magnifier", c: "#c2410c", shelf: "mystery", promise: "Someone did something, and you work out who and why.", why: "Clues, red herrings and the click of a solved puzzle.", sign: "You flick back to check an earlier page." },
       { n: "Thriller and suspense", icon: "stopwatch", c: "#f0386b", shelf: "thriller", promise: "Danger is coming and the clock is running.", why: "Speed, tension and just one more chapter.", sign: "You look up and an hour has gone." },
-      { n: "Romance", icon: "heart", c: "#e0489a", shelf: null, promise: "Two people, one relationship, and a hopeful ending you can count on.", why: "Chemistry, feelings, and knowing it will work out.", sign: "The relationship is the plot, not a side dish." },
+      { n: "Romance", icon: "heart", c: "#e0489a", shelf: "romance", promise: "Two people, one relationship, and a hopeful ending you can count on.", why: "Chemistry, feelings, and knowing it will work out.", sign: "The relationship is the plot, not a side dish." },
       { n: "Science fiction", icon: "planet", c: "#4d7cff", shelf: "scifi", promise: "What if? A story built on science, technology, space or a changed future.", why: "Big ideas wrapped in a story, and problems solved with cleverness.", sign: "The setting is different, and the rules matter." },
       { n: "Fantasy", icon: "wand", c: "#c026d3", shelf: "fantasy", promise: "Magic, myth or an invented world with its own rules.", why: "Escape, wonder and a long journey with a big cast.", sign: "There is a map at the front, or a glossary at the back." },
-      { n: "Horror", icon: "ghost", c: "#6b4a8a", shelf: null, promise: "Written to frighten or unsettle you, with threats that are supernatural, psychological or all too real.", why: "The thrill of fear from a safe chair.", sign: "You read it with the lights on." },
-      { n: "Historical fiction", icon: "hourglass", c: "#c2873a", shelf: null, promise: "Invented people living through a real time and place.", why: "Learning about an era without feeling you are being taught.", sign: "An author's note at the end says what was real." },
-      { n: "Cosy fiction", icon: "teacup", c: "#ff7ac6", shelf: "cosy", promise: "Gentle, low-stakes stories about community, food, small mysteries and kindness.", why: "Comfort. Nothing too terrible happens.", sign: "Lots of tea, and scenes with no real danger." }
+      { n: "Horror", icon: "ghost", c: "#6b4a8a", shelf: "horror", promise: "Written to frighten or unsettle you, with threats that are supernatural, psychological or all too real.", why: "The thrill of fear from a safe chair.", sign: "You read it with the lights on." },
+      { n: "Historical fiction", icon: "hourglass", c: "#c2873a", shelf: "historical", promise: "Invented people living through a real time and place.", why: "Learning about an era without feeling you are being taught.", sign: "An author's note at the end says what was real." },
+      { n: "Cosy fiction", icon: "teacup", c: "#ff7ac6", shelf: "cosy", promise: "Gentle, low-stakes stories about community, food, small mysteries and kindness.", why: "Comfort. Nothing too terrible happens.", sign: "Lots of tea, and scenes with no real danger." },
+      { n: "Classics", icon: "openbook", c: "#8d6e63", shelf: "classics", promise: "Older books that readers have kept for generations, from Austen to Orwell.", why: "Stories that shaped the books you read now, and the pleasure of seeing why they lasted.", sign: "A different pace, and an introduction that explains the era." },
+      { n: "Young adult", icon: "star", c: "#0ea5e9", shelf: "ya", promise: "Stories led by teenage or young characters, in any genre from fantasy to contemporary.", why: "Fast pacing, big feelings and first times, enjoyed by readers of every age.", sign: "Short chapters and a narrator who is still working out who they are." },
+      { n: "Humour", icon: "smile", c: "#facc15", shelf: "humour", promise: "Books written to make you laugh, from comic novels to satire.", why: "Lightness and a voice you enjoy spending time with.", sign: "You read lines out loud to whoever is nearby." },
+      { n: "Graphic novels and comics", icon: "bubble", c: "#ef4444", shelf: "graphic", promise: "Stories told through pictures and words together, including manga.", why: "A fast read with visual storytelling that words alone cannot give.", sign: "You look at the panels before you read the speech." },
+      { n: "Poetry", icon: "quill", c: "#a78bfa", shelf: "poetry", promise: "Short, concentrated writing where each line and its sound matter.", why: "A few minutes of beauty or feeling, and lines you return to.", sign: "You read a page, then read it again." }
     ]],
     ["True stories", "Real people and real events, told as a story.", [
       { n: "Memoir and biography", icon: "person", c: "#00b8d9", shelf: "memoir", promise: "A real life, told by the person who lived it (memoir) or by someone else (biography).", why: "One honest human voice and what it cost them to get through something.", sign: "You feel you know the author by the end." },
       { n: "Narrative non-fiction", icon: "compass", c: "#7ed321", shelf: "narrative", promise: "Real events told with scenes, characters and a plot, like a novel that happened.", why: "The pull of a story, plus the knowledge that it is true.", sign: "You keep saying \"and this really happened\"." },
-      { n: "History", icon: "column", c: "#b08968", shelf: null, promise: "What happened and why, built from research and sources.", why: "Understanding how we got here.", sign: "Maps, dates and a long bibliography." },
-      { n: "True crime", icon: "fingerprint", c: "#d61f57", shelf: null, promise: "A real crime, the people involved and how it was solved or never solved.", why: "The puzzle of a mystery, with real stakes.", sign: "Court records, interviews and a timeline." },
-      { n: "Travel and nature", icon: "mountain", c: "#2b9d8f", shelf: null, promise: "A place, a journey or the natural world, seen through one person's eyes.", why: "Going somewhere without leaving the sofa.", sign: "The landscape is practically a character." }
+      { n: "History", icon: "column", c: "#b08968", shelf: "history", promise: "What happened and why, built from research and sources.", why: "Understanding how we got here.", sign: "Maps, dates and a long bibliography." },
+      { n: "True crime", icon: "fingerprint", c: "#d61f57", shelf: "truecrime", promise: "A real crime, the people involved and how it was solved or never solved.", why: "The puzzle of a mystery, with real stakes.", sign: "Court records, interviews and a timeline." },
+      { n: "Travel and nature", icon: "mountain", c: "#2b9d8f", shelf: "travel", promise: "A place, a journey or the natural world, seen through one person's eyes.", why: "Going somewhere without leaving the sofa.", sign: "The landscape is practically a character." }
     ]],
     ["Ideas and how-to", "Real subjects, explained or taught. You read them for what you take away.", [
       { n: "Psychology and science", icon: "flask", c: "#10b981", shelf: "psych", promise: "How minds, bodies and the world work, led by research and ideas.", why: "The satisfaction of finally understanding something.", sign: "More explaining than story, and studies by name." },
       { n: "Self-help and personal growth", icon: "steps", c: "#ffb100", shelf: "growth", promise: "A method for changing a habit, a mindset or a part of your life.", why: "A clear next step you can try this week.", sign: "Frameworks, exercises and chapter summaries." },
       { n: "Spirituality and philosophy", icon: "sun", c: "#8b5cf6", shelf: "spirit", promise: "Big questions about meaning, consciousness, faith and how to live.", why: "Perspective, and questions without one right answer.", sign: "No plot. Case studies or short chapters to pause on." },
-      { n: "Business and money", icon: "chart", c: "#3b82f6", shelf: null, promise: "How companies, careers and money work, and how to do better.", why: "Practical ideas you can use at work or with your savings.", sign: "Case studies, charts and a how-to ending." }
+      { n: "Business and money", icon: "chart", c: "#3b82f6", shelf: "business", promise: "How companies, careers and money work, and how to do better.", why: "Practical ideas you can use at work or with your savings.", sign: "Case studies, charts and a how-to ending." },
+      { n: "Health and wellbeing", icon: "plus", c: "#34d399", shelf: "health", promise: "How to look after your body and mind, from sleep and exercise to medicine and mental health.", why: "Practical knowledge about the one body you have.", sign: "Research, case studies and advice you could try tonight." },
+      { n: "Food and cooking", icon: "fork", c: "#fb923c", shelf: "food", promise: "Recipes, cooking skills and writing about food and where it comes from.", why: "Ideas for the kitchen, and the pleasure of food on the page.", sign: "Splatters on the pages, and notes in the margin." },
+      { n: "Politics and society", icon: "globe", c: "#64748b", shelf: "politics", promise: "How governments, communities and ideas shape our lives, from current affairs to social issues.", why: "A clearer view of how the world is run and who it works for.", sign: "Arguments, evidence and chapters that make you want to talk." }
     ]]
   ];
   var MIXES = [
@@ -1148,7 +1180,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
       var a1 = el("i"); a1.style.background = m[0][0]; var a2 = el("i"); a2.style.background = m[1][0];
       mx.appendChild(el("span", { class: "mix" }, [a1, m[0][1], " + ", a2, m[1][1], " = ", el("b", { text: m[2] }), el("span", { style: "color:var(--muted)", text: ": " + m[3] })]));
     });
-    var POS = { thriller: [.8, .78], scifi: [.88, .7], fantasy: [.97, .5], cosy: [.8, .16], literary: [.62, .32], memoir: [.18, .8], narrative: [.34, .9], psych: [.3, .3], growth: [.12, .18], spirit: [.45, .5] };
+    var POS = { thriller: [.9, .88], mystery: [.7, .8], scifi: [.8, .62], fantasy: [.96, .5], romance: [.8, .4], horror: [.96, .74], historical: [.66, .52], cosy: [.84, .21], literary: [.56, .36], classics: [.46, .24], ya: [.95, .3], humour: [.7, .16], graphic: [.58, .92], poetry: [.54, .06], memoir: [.1, .82], narrative: [.4, .92], history: [.3, .58], truecrime: [.26, .74], travel: [.06, .58], psych: [.3, .3], growth: [.1, .24], spirit: [.45, .5], business: [.17, .4], health: [.22, .1], food: [.4, .08], politics: [.44, .68] };
     var W = 720, H = 440, L = 40, T = 14, iw = W - L - 12, ih = H - T - 44, ns = "http://www.w3.org/2000/svg";
     function n(tag, a, txt) { var e = document.createElementNS(ns, tag); Object.keys(a || {}).forEach(function (k) { e.setAttribute(k, a[k]); }); if (txt != null) e.textContent = txt; return e; }
     var svg = n("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "Map of genres by how invented they are and how much is at stake" });
@@ -1159,7 +1191,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     svg.appendChild(n("text", { x: L, y: H - 12, "font-size": 12, fill: "#5a6b7b" }, "True and real"));
     svg.appendChild(n("text", { x: L + iw, y: H - 12, "font-size": 12, fill: "#5a6b7b", "text-anchor": "end" }, "Invented"));
     svg.appendChild(n("text", { x: L + iw / 2, y: H - 12, "font-size": 12, fill: "#5a6b7b", "text-anchor": "middle" }, "How invented it is"));
-    var short = { "Cosy and feel-good fiction": "Cosy fiction", "Spirituality and philosophy": "Spirituality", "Self-help and personal growth": "Self-help", "Psychology and science": "Psychology", "Literary and general fiction": "Literary fiction", "Memoir and true stories": "Memoir" };
+    var short = { "Cosy and feel-good fiction": "Cosy fiction", "Spirituality and philosophy": "Spirituality", "Self-help and personal growth": "Self-help", "Psychology and science": "Psychology", "Literary and general fiction": "Literary fiction", "Self-help and personal growth": "Self-help", "Graphic novels and comics": "Graphic novels", "Narrative non-fiction": "Narrative", "Memoir and biography": "Memoir" };
     SHELVES.forEach(function (sh) {
       var p = POS[sh.id]; if (!p) return;
       var st = genreStats(sh.id), r = 14 + Math.min(st.n, 8) * 3, cx = L + p[0] * iw, cy = T + (1 - p[1]) * ih;
@@ -1210,18 +1242,35 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   function guessShelf(tags, title) {
     var t = (tags + " " + title).toLowerCase();
     var rules = [
-      ["thriller", /thriller|mystery|crime|suspense|detective|murder/],
+      ["truecrime", /true[- ]?crime/],
+      ["horror", /horror/],
       ["scifi", /sci-?fi|science fiction|dystopi/],
       ["fantasy", /fantasy/],
-      ["cosy", /cosy|cozy|feel-?good|romance|chick-?lit/],
+      ["cosy", /cosy|cozy|feel-?good/],
+      ["romance", /romance|chick-?lit/],
+      ["mystery", /mystery|detective|whodunit|crime/],
+      ["thriller", /thriller|suspense|murder/],
+      ["ya", /young[- ]?adult|\bya\b|teen/],
+      ["graphic", /graphic|comic|manga/],
+      ["poetry", /poetry|poems|verse/],
+      ["humour", /humou?r|comedy|satire/],
+      ["historical", /historical/],
+      ["classics", /classic/],
       ["memoir", /memoir|biograph|autobiograph/],
-      ["narrative", /true-?crime|history|narrative|journalism/],
-      ["psych", /psycholog|neuroscien|sociolog|economic|science/],
-      ["growth", /self-?help|personal-?development|productivity|business|habit/],
-      ["spirit", /spiritual|religion|philosoph|mindful/]
+      ["history", /history|military/],
+      ["narrative", /narrative|journalism|essay/],
+      ["travel", /travel|nature|outdoor/],
+      ["food", /cook|recipe|baking|\bfood\b/],
+      ["health", /health|wellbeing|well-being|wellness|nutrition|fitness|medicine|medical/],
+      ["business", /business|money|financ|econom|invest|leadership|marketing|management|entrepreneur/],
+      ["growth", /self-?help|personal-?development|productivity|habit/],
+      ["psych", /psycholog|neuroscien|sociolog|science/],
+      ["spirit", /spiritual|religion|philosoph|mindful/],
+      ["politics", /politic|society|social|current-?affairs|feminis|environment/]
     ];
+
     for (var i = 0; i < rules.length; i++) if (rules[i][1].test(t)) return rules[i][0];
-    if (/(^|[^a-z-])fiction|literary|classic|novel/.test(t) && !/non-?fiction/.test(t)) return "literary";
+    if (/(^|[^a-z-])fiction|literary|novel/.test(t) && !/non-?fiction/.test(t)) return "literary";
     return "other";
   }
   function importCSV(text) {

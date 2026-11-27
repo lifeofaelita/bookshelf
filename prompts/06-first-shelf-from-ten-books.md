@@ -16,7 +16,7 @@ Title,Author,My Rating,Exclusive Shelf,Bookshelves,Date Read
 Rules for the columns:
 - My Rating: copy my rating. If I did not give one, leave it empty. Never invent a rating for me.
 - Exclusive Shelf: use read, did-not-finish or to-read.
-- Bookshelves: use one genre word from this list: thriller, sci-fi, fantasy, cosy, literary fiction, memoir, history, psychology, self-help, spiritual. If none fits, leave it empty.
+- Bookshelves: use one genre word from this list: thriller, mystery, sci-fi, fantasy, romance, horror, historical fiction, cosy, literary fiction, classics, young adult, humour, graphic novels, poetry, memoir, narrative non-fiction, history, true crime, travel and nature, psychology and science, self-help, spirituality, business, health, food, politics. If none fits, leave it empty.
 - Date Read: a year if I gave one, otherwise empty.
 - Put any title or author that contains a comma inside double quotes.
 
