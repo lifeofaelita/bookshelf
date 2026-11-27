@@ -58,7 +58,7 @@ Aim for about 10 books with a rating, because that is when your patterns start t
 | Add one book | A short list, or books you read recently | Fill in the form on the Add books tab. Only the title is required. |
 | Import from another app | StoryGraph users | Export your library as a CSV file and import it the same way. The common column names are recognised, but not every export has been tested. |
 
-Imported books land on the right shelf when the genre is clear, and on **Not sorted yet** when it is not. Open a book to move it. The file [prompts/04-sort-my-books.md](prompts/04-sort-my-books.md) shows how to ask a chatbot to sort a long list for you.
+Imported books land on the right shelf when the genre is clear, and on **Not sorted yet** when it is not. When you use a chatbot and a book fits none of the ready-made shelves, such as short stories or parenting, the chatbot can ask the page for a new shelf with that name. Shelves you do not use stay hidden. Open a book to move it. The file [prompts/04-sort-my-books.md](prompts/04-sort-my-books.md) shows how to ask a chatbot to sort a long list for you.
 
 ## How the two scores work
 
@@ -188,9 +188,23 @@ The **prompts** folder holds plain-text versions you can paste straight into a c
 
 ## Run your own copy
 
-1. Press **Fork** at the top of this repository, or download it with **Code, Download ZIP**.
-2. To open it on your computer, unzip it and double-click **index.html**.
-3. To host it free on GitHub Pages: in your fork open **Settings**, then **Pages**, choose the **main** branch and the **/ (root)** folder, and press Save. Your page appears at your-name.github.io/bookshelf after a minute or two.
+You do not need to do this to use Bookshelf. The page at [lifeofaelita.github.io/bookshelf](https://lifeofaelita.github.io/bookshelf/) works for everyone. A copy is only useful if you want a private version or want to change how it looks.
+
+**On your computer**
+
+1. On this page, click the green **Code** button near the top right, then **Download ZIP**.
+2. Unzip the file. On a Mac, double-click it. On Windows, right-click it and choose **Extract All**.
+3. Double-click **index.html**. It opens in your browser.
+
+Your shelf is saved per browser, so a copy opened from your computer starts empty. Press **Download a backup** on the page you already use if you want to move your shelf across.
+
+**On the web, free (optional)**
+
+This needs a free GitHub account.
+
+1. Click **Fork** at the top right of this page. A fork is your own copy of this project under your account.
+2. In your copy, open **Settings**, then **Pages**. Choose the **main** branch and the **/ (root)** folder, then press **Save**.
+3. After a minute or two, your page appears at your-name.github.io/bookshelf.
 
 The code is one HTML file plus the **fonts** and **wood** folders. There is nothing to build.
 

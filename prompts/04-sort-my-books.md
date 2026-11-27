@@ -4,7 +4,7 @@ Handy when your import lands most books on the "Not sorted yet" shelf.
 
 ```
 Sort each book below into exactly one of these shelves:
-thriller, scifi, cosy, literary, memoir, narrative, psych, growth, spirit, other
+thriller, mystery, scifi, fantasy, romance, horror, historical, cosy, literary, classics, ya, humour, graphic, poetry, memoir, narrative, history, truecrime, travel, psych, growth, spirit, business, health, food, politics, other
 
 Answer as a plain list in the format: Title | shelf
 Do not add commentary.
