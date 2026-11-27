@@ -725,7 +725,8 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   /* ---------- data ---------- */
   var SHELVES = [
     { id: "thriller", name: "Thrillers and crime" },
-    { id: "scifi", name: "Science fiction and fantasy" },
+    { id: "scifi", name: "Science fiction" },
+    { id: "fantasy", name: "Fantasy" },
     { id: "cosy", name: "Cosy and feel-good fiction" },
     { id: "literary", name: "Literary and general fiction" },
     { id: "memoir", name: "Memoir and true stories" },
@@ -735,8 +736,8 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     { id: "spirit", name: "Spirituality and philosophy" },
     { id: "other", name: "Not sorted yet" }
   ];
-  var DOT = { thriller: "#f0386b", scifi: "#4d7cff", cosy: "#ff7ac6", literary: "#ff6b3d", memoir: "#00b8d9", narrative: "#7ed321", psych: "#10b981", growth: "#ffb100", spirit: "#8b5cf6", other: "#9fb6cc" };
-  var SHELF_COLOUR = { thriller: "#d61f57", scifi: "#2f5de0", cosy: "#d6409f", literary: "#e2501f", memoir: "#0891b2", narrative: "#5ea011", psych: "#0a9a6c", growth: "#e08a00", spirit: "#6d3fd9", other: "#5a6b7b" };
+  var DOT = { thriller: "#f0386b", scifi: "#4d7cff", fantasy: "#c026d3", cosy: "#ff7ac6", literary: "#ff6b3d", memoir: "#00b8d9", narrative: "#7ed321", psych: "#10b981", growth: "#ffb100", spirit: "#8b5cf6", other: "#9fb6cc" };
+  var SHELF_COLOUR = { thriller: "#d61f57", scifi: "#2f5de0", fantasy: "#a21caf", cosy: "#d6409f", literary: "#e2501f", memoir: "#0891b2", narrative: "#5ea011", psych: "#0a9a6c", growth: "#e08a00", spirit: "#6d3fd9", other: "#5a6b7b" };
 
   // Sample books so the page is never empty. Ratings and scores are made up.
   var BASE = [
@@ -1087,7 +1088,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
       { n: "Thriller and suspense", icon: "stopwatch", c: "#f0386b", shelf: "thriller", promise: "Danger is coming and the clock is running.", why: "Speed, tension and just one more chapter.", sign: "You look up and an hour has gone." },
       { n: "Romance", icon: "heart", c: "#e0489a", shelf: null, promise: "Two people, one relationship, and a hopeful ending you can count on.", why: "Chemistry, feelings, and knowing it will work out.", sign: "The relationship is the plot, not a side dish." },
       { n: "Science fiction", icon: "planet", c: "#4d7cff", shelf: "scifi", promise: "What if? A story built on science, technology, space or a changed future.", why: "Big ideas wrapped in a story, and problems solved with cleverness.", sign: "The setting is different, and the rules matter." },
-      { n: "Fantasy", icon: "wand", c: "#4d7cff", shelf: "scifi", promise: "Magic, myth or an invented world with its own rules.", why: "Escape, wonder and a long journey with a big cast.", sign: "There is a map at the front, or a glossary at the back." },
+      { n: "Fantasy", icon: "wand", c: "#c026d3", shelf: "fantasy", promise: "Magic, myth or an invented world with its own rules.", why: "Escape, wonder and a long journey with a big cast.", sign: "There is a map at the front, or a glossary at the back." },
       { n: "Horror", icon: "ghost", c: "#6b4a8a", shelf: null, promise: "Written to frighten or unsettle you, with threats that are supernatural, psychological or all too real.", why: "The thrill of fear from a safe chair.", sign: "You read it with the lights on." },
       { n: "Historical fiction", icon: "hourglass", c: "#c2873a", shelf: null, promise: "Invented people living through a real time and place.", why: "Learning about an era without feeling you are being taught.", sign: "An author's note at the end says what was real." },
       { n: "Cosy fiction", icon: "teacup", c: "#ff7ac6", shelf: "cosy", promise: "Gentle, low-stakes stories about community, food, small mysteries and kindness.", why: "Comfort. Nothing too terrible happens.", sign: "Lots of tea, and scenes with no real danger." }
@@ -1147,7 +1148,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
       var a1 = el("i"); a1.style.background = m[0][0]; var a2 = el("i"); a2.style.background = m[1][0];
       mx.appendChild(el("span", { class: "mix" }, [a1, m[0][1], " + ", a2, m[1][1], " = ", el("b", { text: m[2] }), el("span", { style: "color:var(--muted)", text: ": " + m[3] })]));
     });
-    var POS = { thriller: [.8, .78], scifi: [.95, .62], cosy: [.8, .16], literary: [.62, .32], memoir: [.18, .8], narrative: [.34, .9], psych: [.3, .3], growth: [.12, .18], spirit: [.45, .5] };
+    var POS = { thriller: [.8, .78], scifi: [.88, .7], fantasy: [.97, .5], cosy: [.8, .16], literary: [.62, .32], memoir: [.18, .8], narrative: [.34, .9], psych: [.3, .3], growth: [.12, .18], spirit: [.45, .5] };
     var W = 720, H = 440, L = 40, T = 14, iw = W - L - 12, ih = H - T - 44, ns = "http://www.w3.org/2000/svg";
     function n(tag, a, txt) { var e = document.createElementNS(ns, tag); Object.keys(a || {}).forEach(function (k) { e.setAttribute(k, a[k]); }); if (txt != null) e.textContent = txt; return e; }
     var svg = n("svg", { viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "Map of genres by how invented they are and how much is at stake" });
@@ -1158,7 +1159,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     svg.appendChild(n("text", { x: L, y: H - 12, "font-size": 12, fill: "#5a6b7b" }, "True and real"));
     svg.appendChild(n("text", { x: L + iw, y: H - 12, "font-size": 12, fill: "#5a6b7b", "text-anchor": "end" }, "Invented"));
     svg.appendChild(n("text", { x: L + iw / 2, y: H - 12, "font-size": 12, fill: "#5a6b7b", "text-anchor": "middle" }, "How invented it is"));
-    var short = { "Cosy and feel-good fiction": "Cosy fiction", "Spirituality and philosophy": "Spirituality", "Self-help and personal growth": "Self-help", "Psychology and science": "Psychology", "Science fiction and fantasy": "Sci-fi and fantasy", "Literary and general fiction": "Literary fiction", "Memoir and true stories": "Memoir" };
+    var short = { "Cosy and feel-good fiction": "Cosy fiction", "Spirituality and philosophy": "Spirituality", "Self-help and personal growth": "Self-help", "Psychology and science": "Psychology", "Literary and general fiction": "Literary fiction", "Memoir and true stories": "Memoir" };
     SHELVES.forEach(function (sh) {
       var p = POS[sh.id]; if (!p) return;
       var st = genreStats(sh.id), r = 14 + Math.min(st.n, 8) * 3, cx = L + p[0] * iw, cy = T + (1 - p[1]) * ih;
@@ -1210,7 +1211,8 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     var t = (tags + " " + title).toLowerCase();
     var rules = [
       ["thriller", /thriller|mystery|crime|suspense|detective|murder/],
-      ["scifi", /sci-?fi|science fiction|fantasy|dystopi/],
+      ["scifi", /sci-?fi|science fiction|dystopi/],
+      ["fantasy", /fantasy/],
       ["cosy", /cosy|cozy|feel-?good|romance|chick-?lit/],
       ["memoir", /memoir|biograph|autobiograph/],
       ["narrative", /true-?crime|history|narrative|journalism/],
