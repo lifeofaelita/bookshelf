@@ -511,6 +511,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
           <label>Title <input type="text" id="a-title" required placeholder="The title of the book"></label>
           <label>Author <input type="text" id="a-author" placeholder="Who wrote it"></label>
           <label>Shelf <select id="a-shelf"></select></label>
+          <label id="a-newshelf-label" hidden>Name for the new shelf <input type="text" id="a-newshelf" maxlength="40" placeholder="For example Short stories"></label>
           <label>Did you finish it?
             <select id="a-status"><option value="finished">Finished</option><option value="dnf">Did not finish</option><option value="toread">Not started</option></select>
           </label>
@@ -1243,18 +1244,21 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
 
   /* ---------- add books ---------- */
   function fillShelfSelect() {
-    var s = $("a-shelf"); s.textContent = "";
+    var s = $("a-shelf"), keep = s.value; s.textContent = "";
     SHELVES.forEach(function (sh) { s.appendChild(el("option", { value: sh.id, text: sh.name })); });
-    s.value = "other";
+    s.appendChild(el("option", { value: "__new__", text: "A new shelf..." }));
+    s.value = keep && s.querySelector('option[value="' + keep + '"]') ? keep : "other";
+    $("a-newshelf-label").hidden = s.value !== "__new__";
   }
+  $("a-shelf").addEventListener("change", function () { $("a-newshelf-label").hidden = this.value !== "__new__"; if (this.value === "__new__") $("a-newshelf").focus(); });
   function numOrNull(v) { var n = parseInt(v, 10); return n >= 1 && n <= 5 ? n : null; }
   $("add-form").addEventListener("submit", function (ev) {
     ev.preventDefault();
     var title = $("a-title").value.trim();
     if (!title) return;
-    var b = { id: newId(), title: title, author: $("a-author").value.trim() || "Unknown author", shelf: $("a-shelf").value, status: $("a-status").value, rating: numOrNull($("a-rating").value), idea: numOrNull($("a-idea").value), pt: numOrNull($("a-pt").value), when: $("a-when").value.trim(), note: $("a-note").value.trim() };
+    var b = { id: newId(), title: title, author: $("a-author").value.trim() || "Unknown author", shelf: $("a-shelf").value === "__new__" ? customShelf($("a-newshelf").value) : $("a-shelf").value, status: $("a-status").value, rating: numOrNull($("a-rating").value), idea: numOrNull($("a-idea").value), pt: numOrNull($("a-pt").value), when: $("a-when").value.trim(), note: $("a-note").value.trim() };
     state.mine.push(b); save();
-    this.reset(); $("a-shelf").value = "other";
+    this.reset(); syncCustom(); fillShelfSelect(); $("a-shelf").value = "other"; $("a-newshelf-label").hidden = true;
     say($("a-status-msg"), "Added " + title + ". You can find it on My shelf.");
     refreshAll();
   });
@@ -1394,7 +1398,6 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
   ];
   function storeRow() { return STORES.filter(function (s) { return s[0] === state.store; })[0] || STORES[0]; }
   function storeUrl(title, author) { return storeRow()[3] + encodeURIComponent((title + " " + (author && author !== "Unknown author" ? author : "")).trim()); }
-  var SHELF_LIST = SHELVES.filter(function (s) { return s.id !== "other"; }).map(function (s) { return s.id + " = " + s.name; }).join("; ");
   function historyText() {
     return books().map(function (b) {
       return "- " + b.title + " by " + b.author + " | shelf: " + shelfOf(b.shelf).name + " | rating: " + (b.rating ? b.rating + "/5" : "not rated") +
@@ -1418,7 +1421,10 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     return ["", "WHAT MY SHELF ALREADY SHOWS (worked out by the page from my own ratings, so confirm or correct it)"].concat(findings().map(function (x) { return "- " + x[0] + ": " + x[1]; }));
   }
   var REPLY = "Reply with one JSON object inside a single code block, in exactly this shape, and put nothing after the code block. One short sentence before it is fine.";
-  function genreRule() { return "For genre, use only one of these ids: " + SHELF_LIST + "."; }
+  function genreRule() {
+    var list = SHELVES.filter(function (s) { return s.id !== "other"; }).map(function (s) { return s.id + " = " + s.name; }).join("; ");
+    return "For genre, use one of these ids: " + list + ". If a book fits none of them well, write the genre as new: followed by a short shelf name in plain English, for example new:Short stories, and use the same name for similar books. Use at most five new shelves, and use other only as a last resort.";
+  }
   function overall(i, r) { return Math.round(0.4 * i + 0.6 * r); }
   function clamp(v) { v = Math.round(Number(v)); return isFinite(v) ? Math.max(0, Math.min(100, v)) : 0; }
 
@@ -1769,7 +1775,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
     if (view === "guide") renderGuide();
     if (view === "recs") renderRecs();
   }
-  function refreshAll() { syncCustom(); save(); renderShelf(); renderRecs(); renderPile(); if (!$("view-profile").hidden) renderProfile(); if (!$("view-guide").hidden) renderGuide(); }
+  function refreshAll() { syncCustom(); save(); fillShelfSelect(); renderShelf(); renderRecs(); renderPile(); if (!$("view-profile").hidden) renderProfile(); if (!$("view-guide").hidden) renderGuide(); }
 
   document.querySelectorAll(".tab").forEach(function (t) { t.addEventListener("click", function () { show(t.getAttribute("data-view")); }); });
   document.querySelectorAll(".chip").forEach(function (c) {
