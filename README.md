@@ -58,7 +58,7 @@ Aim for about 10 books with a rating, because that is when your patterns start t
 | Add one book | A short list, or books you read recently | Fill in the form on the Add books tab. Only the title is required. |
 | Import from another app | StoryGraph users | Export your library as a CSV file and import it the same way. The common column names are recognised, but not every export has been tested. |
 
-Imported books land on the right shelf when the genre is clear, and on **Not sorted yet** when it is not. When you use a chatbot and a book fits none of the ready-made shelves, such as short stories or parenting, the chatbot can ask the page for a new shelf with that name. Shelves you do not use stay hidden. Open a book to move it. The file [prompts/04-sort-my-books.md](prompts/04-sort-my-books.md) shows how to ask a chatbot to sort a long list for you.
+Imported books land on the right shelf when the genre is clear, and on **Not sorted yet** when it is not. When you use a chatbot and a book fits none of the ready-made shelves, such as short stories or parenting, the chatbot can ask the page for a new shelf with that name. Importing a Goodreads or CSV file straight into the page cannot create shelves, because the file only holds Goodreads' own genre tags. Those books go to the nearest shelf or to Not sorted yet, and you can move each one from its drawer. Shelves you do not use stay hidden. Open a book to move it. The file [prompts/04-sort-my-books.md](prompts/04-sort-my-books.md) shows how to ask a chatbot to sort a long list for you.
 
 ## How the two scores work
 

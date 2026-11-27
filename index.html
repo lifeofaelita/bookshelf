@@ -1351,7 +1351,7 @@ details.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
       var r;
       try { r = importCSV(String(rd.result)); } catch (e) { r = { error: "I could not read that file." }; }
       if (r.error) say(msg, r.error);
-      else { say(msg, "Added " + r.added + (r.added === 1 ? " book" : " books") + (r.skipped ? " and skipped " + r.skipped + " you already had" : "") + ". Books without a clear genre are on the Not sorted yet shelf. Open a book to move it, and to add the two scores."); state.sampleOff = state.sampleOff || r.added > 0; save(); refreshAll(); }
+      else { say(msg, "Added " + r.added + (r.added === 1 ? " book" : " books") + (r.skipped ? " and skipped " + r.skipped + " you already had" : "") + ". Books without a clear genre are on the Not sorted yet shelf. Open a book to move it, and to add the two scores." + (state.mine.some(function (b) { return b.shelf === "other"; }) ? " For a better sort, or to give unusual books a shelf of their own such as Short stories, use the one-line chatbot setup at the top of this tab. A chatbot can create new shelves. A file import cannot." : "")); state.sampleOff = state.sampleOff || r.added > 0; save(); refreshAll(); }
       input.value = "";
     };
     rd.onerror = function () { say(msg, "I could not read that file."); };
